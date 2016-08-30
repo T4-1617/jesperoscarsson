@@ -22,6 +22,16 @@ namespace Textbox
             string fName = textBox1.Text;
             string LName = textBox2.Text;
 
+            if (fName == "Michael" && LName == "Bay")
+            {
+                pictureBox1.Visible = true;
+            }
+
+            else
+            {
+                pictureBox1.Visible = false;
+            }
+
             MessageBox.Show("Hello " + fName + " " + LName + "!");
         }
     }
