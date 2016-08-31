@@ -39,7 +39,9 @@ namespace calculator
                     Console.Write("\n\nError,invalid entry!");
                     break;
             }
-            Console.WriteLine("\nAnswer: " + answer);
+            string show = String.Format("\nAnswer: {0} {1} {2} = {3}", numberOne, operation, numberTwo, answer);
+
+            Console.WriteLine(show);
         }
     }
 }
