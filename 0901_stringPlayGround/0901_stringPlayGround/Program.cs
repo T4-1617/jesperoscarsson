@@ -61,9 +61,9 @@ namespace _0901_stringPlayGround
             string fName = name.Substring(0, indexOfSpace);
             Console.WriteLine("Your first name is: " + fName + ",\tand it contains: (" + indexOfSpace + ") characters"); //Prints first name and character count
             //Second name
-            string sName = name.Substring(indexOfSpace++, (name.Length - fName.Length));
+            string sName = name.Substring(++indexOfSpace, (name.Length - fName.Length)-1);
             //Prints second name and character count
-            Console.WriteLine("Your second name is:"/*<- Missing a space as a temp fix*/ + sName + ",\tand it contains: (" + (name.Length - indexOfSpace) + ") characters");
+            Console.WriteLine("Your second name is: " + sName + ",\tand it contains: (" + (name.Length - indexOfSpace) + ") characters");
             //Reversed name print
             Console.WriteLine("Reversed name:" + sName + " " + fName);
 
