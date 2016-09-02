@@ -16,9 +16,9 @@ namespace battleships_0902
             int rndNum = random.Next(minVal, maxVal);
             return rndNum;
         }
-        
+
         //Function for setting AI boats
-        static void setAIBoats(int boatSpawn, int[] boatX, int[] boatY, bool[,] gridAI)
+        static void setAIBoats()
         {
             //Loop for assigning random X & Y values
             for (int i = 0; i < boatSpawn; i++)
@@ -42,24 +42,21 @@ namespace battleships_0902
                 gridAI[boatX[j], boatY[j]] = true;
             }
         }
-        
+
         //For writing the grid
-        static void writeGrid(bool[,] gridAI)
+        static void writeGrid()
         {
             for (int y = 0; y < 5; y++)
             {
                 for (int x = 0; x < 7; x++)
                 {
-                    string p; //Used to print
+                    string p = " ~ "; //Used to print
 
-                    if (gridAI[x, y] == true)
-                    {
-                        p = " O ";
-                    }
-                    else
-                    {
-                        p = " ~ ";
-                    }
+                    //if (gridAI[x, y] == false)
+                    //{
+                    //    p = " ~ ";
+                    //}
+
 
                     Console.Write(p);
                 }
@@ -69,49 +66,57 @@ namespace battleships_0902
         }
 
         //For sinking ships
-        static void sinkShip(bool[,] gridAI, int hitCounter, int missCounter)
+        static void sinkShip()
         {
             Console.Write("\n\nEnter the X coordinate: ");
-            int xCord = int.Parse(Console.ReadLine());
+            int xCord = int.Parse(Console.ReadLine())-1;
             Console.Write("\nEnter the Y coordinate: ");
-            int yCord = int.Parse(Console.ReadLine());
+            int yCord = int.Parse(Console.ReadLine())-1;
 
             if (gridAI[xCord, yCord] == true)
             {
-                Console.WriteLine("\nHit!");
+                Console.WriteLine("\n\nHit!");
                 gridAI[xCord, yCord] = false;
-                hitCounter++;
-            }
 
+                hitCounter++;
+
+                if (hitCounter == boatSpawn)
+                {
+                    gameSwitcher = false;
+                    Console.WriteLine("You win!");
+                }
+            }
             else
             {
                 Console.WriteLine("\nMiss!");
                 missCounter++;
             }
+
         }
+
+        //START Vars
+        static bool gameSwitcher = true;
+        static int hitCounter = 0;
+        static int missCounter = 0;
+        static int boatSpawn = randomNumber(4, 6);
+        static bool[,] gridAI = new bool[7, 5];
+        //END Vars
+
+        //Holds the X values for the spawned boats
+        static int[] boatX = new int[boatSpawn];
+        //Holds the Y values for the spawned boats
+        static int[] boatY = new int[boatSpawn];
 
         static void Main(string[] args)
         {
-            //START Vars
-            //Vars for stats
-            int missCounter = 0;
-            int hitCounter = 0;
+            setAIBoats();
 
-            //Decides how many AI boats to spawn
-            int boatSpawn = randomNumber(4, 6);
-            
-            //Holds the X values for the spawned boats
-            int[] boatX = new int[boatSpawn];
-            //Holds the Y values for the spawned boats
-            int[] boatY = new int[boatSpawn];
-
-            //Grid for AI
-            bool[,] gridAI = new bool[7, 5];
-            //END Vars
-
-            setAIBoats(boatSpawn, boatX, boatY, gridAI);
-            writeGrid(gridAI);
-            sinkShip(gridAI, hitCounter, missCounter);
+            //Game logic
+            while (gameSwitcher == true)
+            {
+                writeGrid();
+                sinkShip();
+            }
         }
     }
 }
