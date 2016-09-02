@@ -8,32 +8,38 @@ namespace battleships_0902
 {
     class Program
     {
+
+        static Random random = new Random();
+
         static int randomNumber(int minVal, int maxVal)
         {
-            Random random = new Random();
             int rndNum = random.Next(minVal, maxVal);
             return rndNum;
         }
 
         static void Main(string[] args)
         {
-
+            //Decides how many AI boats to spawn
             int boatSpawn = randomNumber(4, 6);
             
-            //BROKEN DO NOT USE!!!
-            int[,] boat = new int[boatSpawn, boatSpawn];
+            //Holds the X values for the spawned boats
             int[] boatX = new int[boatSpawn];
+            //Holds the Y values for the spawned boats
             int[] boatY = new int[boatSpawn];
-            Console.WriteLine("X:\tY:");
+            //Keep for debug
+            //Console.WriteLine("X:\tY:");
+            //Loop for assigning random X & Y values
             for (int i = 0; i < boatSpawn; i++)
             {
                 boatX[i] = randomNumber(0, 7);
-                System.Threading.Thread.Sleep(1000);
                 boatY[i] = randomNumber(0, 5);
-                Console.Write(boatX[i] + "\t");
-                Console.WriteLine(boatY[i]);
+                //Keep for debug
+                //Console.Write(boatX[i] + "\t");
+                //Console.WriteLine(boatY[i]);
             }
 
+
+            //Grid for player
             bool[,] gridPlayer = new bool[7, 5];
 
             //Fill grid with empty space
@@ -45,29 +51,31 @@ namespace battleships_0902
                 }
             }
 
-            //Placera ut några båtar på spelplanen
+            //Places boats
             for (int j = 0; j < boatSpawn; j++)
             {
                 gridPlayer[boatX[j], boatY[j]] = true;
             }
 
-            //Vi testar att skriva ut hela spelplanen
+            //For writing the grid
             for (int y = 0; y < 5; y++)
             {
                 for (int x = 0; x < 7; x++)
                 {
-                    string p;
+                    string p; //Used to print
+
                     if (gridPlayer[x, y] == true)
-                    {
-                        p = " X ";
-                    }
-                    else
                     {
                         p = " O ";
                     }
-                    //Console.Write(GameMap[x, y]); 
+                    else
+                    {
+                        p = " ~ ";
+                    }
+
                     Console.Write(p);
                 }
+
                 Console.WriteLine();
             }
 
