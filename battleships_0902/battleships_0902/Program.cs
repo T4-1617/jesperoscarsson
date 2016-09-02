@@ -52,10 +52,10 @@ namespace battleships_0902
                 {
                     string p = " ~ "; //Used to print
 
-                    //if (gridAI[x, y] == false)
-                    //{
-                    //    p = " ~ ";
-                    //}
+                    /*if (gridAI[x, y] == false)
+                    {
+                        p = " ~ ";
+                    }*/
 
 
                     Console.Write(p);
@@ -75,7 +75,7 @@ namespace battleships_0902
 
             if (gridAI[xCord, yCord] == true)
             {
-                Console.WriteLine("\n\nHit!");
+                Console.WriteLine("\nHit!\n");
                 gridAI[xCord, yCord] = false;
 
                 hitCounter++;
@@ -83,12 +83,12 @@ namespace battleships_0902
                 if (hitCounter == boatSpawn)
                 {
                     gameSwitcher = false;
-                    Console.WriteLine("You win!");
+                    Console.WriteLine("You win!\n");
                 }
             }
             else
             {
-                Console.WriteLine("\nMiss!");
+                Console.WriteLine("\nMiss!\n");
                 missCounter++;
             }
 
