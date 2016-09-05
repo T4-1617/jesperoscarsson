@@ -25,12 +25,11 @@ namespace cardGame
         static string[,] cardDeckInit(string[,] cardDeckString)
         {
             int colourPicker = 1; //Used in loop to designate what colour to assign card (1 = Hearts, 2 = Diamonds, 3 = Clubs, 4 = Spades)
-            //String for holding special values
-            string tempColourHolder  = string.Empty;
+            string tempColourHolder  = string.Empty; //String for holding special values
             //Loop assigns cards into the array starting with Hearts Ace
             for (int x = 0; x < amountColourTypes; x++)
             {
-                for (int y = 0; y < amountCardTypes; y++)
+                for (int y = 1; y - 1 < amountCardTypes; y++) //Add 1 to y so "Colour 1" isn't printed (since Ace is = 1)
                 {
                     switch(colourPicker)
                     {
@@ -51,23 +50,24 @@ namespace cardGame
                             break;
                     }
                     //Checks for Ace, Jack, Queen & King and names there after, else just give the y number as name
-                    switch(y)
+                    //Takes y - 1 so we don't try to write outside the array
+                    switch (y)
                     {
                         case 1:
-                            cardDeckString[x, y] = tempColourHolder + " " + "Ace";
+                            cardDeckString[x, y - 1] = tempColourHolder + " " + "Ace";
                             break;
                         case 11:
-                            cardDeckString[x, y] = tempColourHolder + " " + "Jack";
+                            cardDeckString[x, y - 1] = tempColourHolder + " " + "Jack";
                             break;
                         case 12:
-                            cardDeckString[x, y] = tempColourHolder + " " + "Queen";
+                            cardDeckString[x, y - 1] = tempColourHolder + " " + "Queen";
                             break;
                         case 13:
-                            cardDeckString[x, y] = tempColourHolder + " " + "King";
+                            cardDeckString[x, y - 1] = tempColourHolder + " " + "King";
                             break;
                         default:
                             //Assign value to array, whitespace used for seperating colour & type
-                            cardDeckString[x, y] = tempColourHolder + " " + y.ToString();
+                            cardDeckString[x, y - 1] = tempColourHolder + " " + y.ToString();
                             break;
                     }
                     //End of inner-loop
@@ -88,6 +88,7 @@ namespace cardGame
             {
                 Console.WriteLine(card);
             }
+            Console.WriteLine(cardDeckString.Length);
         }
     }
 }
