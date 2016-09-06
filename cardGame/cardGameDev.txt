@@ -1,0 +1,26 @@
+Problem: Store 52 cards (consisting of 4 colours and 13 types) in an array and have the ability to check if they've been played already. The program should also be able to mix the cards.
+
+Tools: Use IDE for coding and keep backups on github
+
+Event sequence: Check schematic picture
+
+
+
+
+
+Freespace:
+
+2 arrays, one two dimensional string(?Maybe not optimal?), one two dimensional bool(make bool size = to string array size). Set x to colour (1 = Hearts, 2 = Diamonds, 3 = Clubs, 4= Spades) and y to type. 1 = ace, ..., 13 = king. Use bool to check if card has been placed and string to store actual card. Also fill arrays with values using loops.
+
+^Requires no input, happends at start of program, outputs two filled arrays (although not to screen)
+
+\\\\
+////
+
+For randomizing cards use random class and and when user ask for card randomize what card he gets (check if it has been placed before!) and then update bool array.
+
+^Make into void function triggered by user (Also put into a loop until all cards have been dealt). Outputs users card value and colour to screen.
+
+//Things that has been done since last commit: (REMOVE)
+
+Added function that asks user to draw a card which gets randomized and a function to check if that card has been drawn previously
