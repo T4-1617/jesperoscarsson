@@ -14,7 +14,9 @@ namespace cardGame
         //Const variables declarations
         const int amountColourTypes = 4;
         const int amountCardTypes   = 13;
-        const int amountTotalCards  = 52; //Maybe remove?
+        const int amountTotalCards  = 52;
+        //Variables
+        static int pointKeeper = 0;
 
         //Array declarations
         static string[,] cardDeckString= new String[amountColourTypes,amountCardTypes]; //Used to hold all card values
@@ -96,12 +98,12 @@ namespace cardGame
         {
             int x = random.Next(0, amountColourTypes);
             int y = random.Next(0, amountCardTypes);
-
+            //Return used so it updates actual value in original function
             if(cardDealtCheck(x, y) == true)
             {
                 return getRndCard();
             }
-
+            pointKeeper += (y + 1); //Update point system
             cardDeckBool[x,y] = true; //Sets card status to placed
             return cardDeckString[x,y];
         }
@@ -109,13 +111,17 @@ namespace cardGame
         static void Main(string[] args)
         {
             cardDeckInit(cardDeckString);
+            int counter = 1;
             //Loop for giving out cards For testing, to be changed!!!!
             for (int i = 1; i <= amountTotalCards; i++)
             {
                 Console.WriteLine("Press enter to get a card");
                 Console.ReadLine();
 
-                Console.WriteLine("\n" + getRndCard());
+                Console.WriteLine("\nPlaced card(s): " + counter + ", " + getRndCard() + ", There's " + 
+                    (amountTotalCards - counter) + " card(s) left" + " You have " + pointKeeper + " points");
+
+                counter++;
             }
         }
     }
