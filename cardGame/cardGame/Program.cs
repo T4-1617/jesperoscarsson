@@ -94,14 +94,15 @@ namespace cardGame
         //Function for giving user a random card
         static string getRndCard()
         {
-            int x = random.Next(0, amountColourTypes + 1);
-            int y = random.Next(0, amountCardTypes + 1);
+            int x = random.Next(0, amountColourTypes);
+            int y = random.Next(0, amountCardTypes);
 
-            if(cardDealtCheck(x, y) == false)
+            if(cardDealtCheck(x, y) == true)
             {
-                getRndCard();
+                return getRndCard();
             }
 
+            cardDeckBool[x,y] = true; //Sets card status to placed
             return cardDeckString[x,y];
         }
 
@@ -111,7 +112,10 @@ namespace cardGame
             //Loop for giving out cards For testing, to be changed!!!!
             for (int i = 1; i <= amountTotalCards; i++)
             {
-                Console.WriteLine(i);
+                Console.WriteLine("Press enter to get a card");
+                Console.ReadLine();
+
+                Console.WriteLine("\n" + getRndCard());
             }
         }
     }
