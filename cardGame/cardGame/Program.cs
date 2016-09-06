@@ -9,18 +9,19 @@ namespace cardGame
     class Program
     {
         //Declaration of random class
-        Random random = new Random();
+        static Random random = new Random();
         
         //Const variables declarations
         const int amountColourTypes = 4;
         const int amountCardTypes   = 13;
+        const int amountTotalCards  = 52; //Maybe remove?
 
         //Array declarations
         static string[,] cardDeckString= new String[amountColourTypes,amountCardTypes]; //Used to hold all card values
         static bool[,] cardDeckBool = new bool[amountColourTypes, amountCardTypes];     //Used to check if cards have been placed
 
         //Functions
-        
+       
         //Function for initializing string array
         static string[,] cardDeckInit(string[,] cardDeckString)
         {
@@ -78,17 +79,40 @@ namespace cardGame
 
             return cardDeckString;
         }
+        //Function for checking if a card has been placed
+        static bool cardDealtCheck(int x, int y)
+        {
+            bool cardDealtCheckAnswer = false;
+
+            if (cardDeckBool[x,y] == true)
+            {
+                cardDealtCheckAnswer = true;
+            }
+
+            return cardDealtCheckAnswer;
+        }
+        //Function for giving user a random card
+        static string getRndCard()
+        {
+            int x = random.Next(0, amountColourTypes + 1);
+            int y = random.Next(0, amountCardTypes + 1);
+
+            if(cardDealtCheck(x, y) == false)
+            {
+                getRndCard();
+            }
+
+            return cardDeckString[x,y];
+        }
 
         static void Main(string[] args)
         {
             cardDeckInit(cardDeckString);
-
-            //For testing to be REMOVED
-            foreach (string card in cardDeckString)
+            //Loop for giving out cards For testing, to be changed!!!!
+            for (int i = 1; i <= amountTotalCards; i++)
             {
-                Console.WriteLine(card);
+                Console.WriteLine(i);
             }
-            Console.WriteLine(cardDeckString.Length);
         }
     }
 }
