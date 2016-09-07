@@ -117,8 +117,28 @@ namespace blackjackGame
             {
                 return getRndCard();
             }
+            //Extra task 1.1 & 1.2
+            int tempYvalHolder = y;
+            switch (tempYvalHolder)
+            {
+                case 1: //Decide if 1 = 11 or not
+                    if (11 + playerPoints <= 21)
+                    {
+                        tempYvalHolder = 10;
+                    }
+                    break;
+                case 11:
+                    tempYvalHolder = 9;
+                    break;
+                case 12:
+                    tempYvalHolder = 9;
+                    break;
+                case 13:
+                    tempYvalHolder = 9;
+                    break;
+            }
 
-            playerPoints += (y + 1); //Update point system
+            playerPoints += (tempYvalHolder + 1); //Update point system
             amountCards--;
             shoePlacementHolder[x, y] = true; //Sets card status to placed
 
