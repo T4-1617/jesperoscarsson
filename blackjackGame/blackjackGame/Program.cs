@@ -14,7 +14,9 @@ namespace blackjackGame
         //Variables
         const int amountSuits = 8;
         const int amountRanks = 13;
+        static int amountCards = 104;
         static bool gameStatus = true;
+        static int playerPoints = 0;
 
         //Arrays
         static string[,] shoe = new string[amountSuits, amountRanks]; //Even though there are only 4 suits the value 8 is used to simulate 2 decks
@@ -91,21 +93,84 @@ namespace blackjackGame
             return shoe;
         }
 
+        //Function for checking if card has been placed
+        static bool cardPlacedCheck(int x, int y)
+        {
+            bool cardPlacedCheckAnswer = false;
+
+            if (shoePlacementHolder[x, y])
+            {
+                cardPlacedCheckAnswer = true;
+            }
+
+            return cardPlacedCheckAnswer;
+        }
+
+        //Function for giving user a random card from shoe
+        static string getRndCard()
+        {
+            int x = rndGenerator.Next(0, amountSuits);
+            int y = rndGenerator.Next(0, amountRanks);
+
+            //Return used so it updates actual value in original function
+            if (cardPlacedCheck(x, y))
+            {
+                return getRndCard();
+            }
+
+            playerPoints += (y + 1); //Update point system
+            amountCards--;
+            shoePlacementHolder[x, y] = true; //Sets card status to placed
+
+            return shoe[x, y];
+        }
+
+        //End functions
+
         static void Main(string[] args)
         {
-            while (gameStatus == true)
+
+            shoeInit(shoe);
+
+            while (gameStatus)
             {
                 Console.Write("\nDo you want to draw a card? (y/n): ");
                 char playerSelection = Console.ReadKey().KeyChar;
 
-                if (gameStatus == false || playerSelection == 'n') //For ending game
+                if (amountCards == 0)
                 {
-                    Console.WriteLine("\n\nGame over!");
+                    Console.WriteLine("\nNo cards remaining, ending game");
                     break;
+                }
+                else if (playerSelection == 'n')
+                {
+                    Console.WriteLine("\nYou got {0} points, do you want to continue? (y/n): ", playerPoints);
+                    char playerNSelection = Console.ReadKey().KeyChar;
+
+                    if (playerNSelection == 'y')
+                    {
+                        playerPoints = 0;
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
                 else if (playerSelection == 'y')
                 {
-                    //Call functions here
+                    Console.WriteLine("\nYou got a {0} and your total points are: {1}", getRndCard(), playerPoints);
+
+                    if (playerPoints == 21)
+                    {
+                        Console.WriteLine("\nCongratulations, you've won!!!");
+                        break;
+                    }
+                    else if (playerPoints > 21)
+                    {
+                        playerPoints = 0;
+                        Console.WriteLine("\nYou've lost, better luck next time");
+                    }
                 }
                 else
                 {
