@@ -12,14 +12,14 @@ namespace blackjackGame
         static Random rndGenerator = new Random();
 
         //Variables
-        const int amountSuits = 8;
+        const int amountSuits = 16;
         const int amountRanks = 13;
-        static int amountCards = 104;
+        static int amountCards = 208;
         static bool gameStatus = true;
         static int playerPoints = 0;
 
         //Arrays
-        static string[,] shoe = new string[amountSuits, amountRanks]; //Even though there are only 4 suits the value 8 is used to simulate 2 decks
+        static string[,] shoe = new string[amountSuits, amountRanks]; //Even though there are only 4 suits the value 16 is used to simulate 4 decks
         static bool[,] shoePlacementHolder = new bool[amountSuits, amountRanks];
 
         //Functions
@@ -37,28 +37,16 @@ namespace blackjackGame
                 {
                     switch (suitSelector)
                     {
-                        case 1:
+                        case 1: case 5: case 9: case 13:
                             tempSuitHolder = "Hearts";
                             break;
-                        case 2:
+                        case 2: case 6: case 10: case 14:
                             tempSuitHolder = "Diamonds";
                             break;
-                        case 3:
+                        case 3: case 7: case 11: case 15:
                             tempSuitHolder = "Clubs";
                             break;
-                        case 4:
-                            tempSuitHolder = "Spades";
-                            break;
-                        case 5:
-                            tempSuitHolder = "Hearts";
-                            break;
-                        case 6:
-                            tempSuitHolder = "Diamonds";
-                            break;
-                        case 7:
-                            tempSuitHolder = "Clubs";
-                            break;
-                        case 8:
+                        case 4: case 8: case 12: case 16:
                             tempSuitHolder = "Spades";
                             break;
                         default:
@@ -93,19 +81,6 @@ namespace blackjackGame
             return shoe;
         }
 
-        //Function for checking if card has been placed
-        static bool cardPlacedCheck(int x, int y)
-        {
-            bool cardPlacedCheckAnswer = false;
-
-            if (shoePlacementHolder[x, y])
-            {
-                cardPlacedCheckAnswer = true;
-            }
-
-            return cardPlacedCheckAnswer;
-        }
-
         //Function for giving user a random card from shoe
         static string getRndCard()
         {
@@ -113,32 +88,28 @@ namespace blackjackGame
             int y = rndGenerator.Next(0, amountRanks);
 
             //Return used so it updates actual value in original function
-            if (cardPlacedCheck(x, y))
+            if (shoePlacementHolder[x, y])
             {
                 return getRndCard();
             }
             //Extra task 1.1 & 1.2
-            int tempYvalHolder = y;
+            int tempYvalHolder = (y + 1);
             switch (tempYvalHolder)
             {
                 case 1: //Decide if 1 = 11 or not
                     if (11 + playerPoints <= 21)
                     {
-                        tempYvalHolder = 10;
+                        tempYvalHolder = 11;
                     }
                     break;
-                case 11:
-                    tempYvalHolder = 9;
+                case 11: case 12: case 13:
+                    tempYvalHolder = 10;
                     break;
-                case 12:
-                    tempYvalHolder = 9;
-                    break;
-                case 13:
-                    tempYvalHolder = 9;
+                default:
                     break;
             }
 
-            playerPoints += (tempYvalHolder + 1); //Update point system
+            playerPoints += tempYvalHolder; //Update point system
             amountCards--;
             shoePlacementHolder[x, y] = true; //Sets card status to placed
 
