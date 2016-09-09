@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace blackjackGame
 {
@@ -18,7 +19,6 @@ namespace blackjackGame
         static bool gameStatus = true;
         static int playerPoints = 0;
         static int playerCurrentPoints = 0;
-        static int aiPoints = 0;
         static int aiCurrentPoints = 0;
         static bool aiOrPlayer = true; //True = Player, False = AI
         static bool AiTurnCheck = true;
@@ -166,7 +166,7 @@ namespace blackjackGame
                         gameStatus = false;
                         break;
                     }
-                    else if (playerSelection == 'n') //Subject to change
+                    else if (playerSelection == 'n')
                     {
                         Console.Write("\nYou got {0} points, do you want to continue playing? (y/n): ", playerCurrentPoints);
                         char playerNSelection = Console.ReadKey().KeyChar;
@@ -189,6 +189,9 @@ namespace blackjackGame
                             Console.WriteLine("\nCongratulations, you've won!!!");
                             playerCurrentPoints = 0;
                             aiCurrentPoints = 0;
+                            playerPoints += 3;
+                            Thread.Sleep(2000);
+                            Console.Clear();
                             break;
                         }
                         else if (playerCurrentPoints > 21)
@@ -196,6 +199,9 @@ namespace blackjackGame
                             Console.WriteLine("\nYou've bursted, better luck next time");
                             playerCurrentPoints = 0;
                             aiCurrentPoints = 0;
+                            playerPoints--;
+                            Thread.Sleep(2000);
+                            Console.Clear();
                             break;
                         }
                     }
@@ -214,13 +220,29 @@ namespace blackjackGame
                             Console.WriteLine("\n\nAI got 21 and wins!");
                             playerCurrentPoints = 0;
                             aiCurrentPoints = 0;
+                            playerPoints--;
+                            Thread.Sleep(2000);
+                            Console.Clear();
                             break;
                         }
                         else if (aiCurrentPoints > 21)
                         {
                             Console.WriteLine("\n\nAI got {0} points and burst!", aiCurrentPoints);
                             playerCurrentPoints = 0;
-                            aiCurrentPoints = 0;                           
+                            aiCurrentPoints = 0;
+                            playerPoints++;
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        }
+                        else if (aiCurrentPoints == playerCurrentPoints)
+                        {
+                            Console.WriteLine("\n\nAI got {0} points and won!", aiCurrentPoints);
+                            playerCurrentPoints = 0;
+                            aiCurrentPoints = 0;
+                            playerPoints--;
+                            Thread.Sleep(2000);
+                            Console.Clear();
                             break;
                         }
                     }
