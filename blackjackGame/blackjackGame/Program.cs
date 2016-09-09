@@ -150,13 +150,27 @@ namespace blackjackGame
 
             while (gameStatus)
             {
+                //Reshuffle deck
+                if (amountCards <= 15)
+                {
+                    for (int x = 0; x < amountSuits; x++)
+                    {
+                        for (int y = 0; y < amountRanks; y++)
+                        {
+                            shoePlacementHolder[x, y] = false;
+                        }
+                    }
+                }
+                //Change aiOrPlayerso AI gets points
                 aiOrPlayer = false;
                 Console.WriteLine("\n\nComputer draws {0} and now has {1} points", getRndCard(), aiCurrentPoints);
                 aiOrPlayer = true;
 
                 while (aiOrPlayer) //Player turn
                 {
+                    //AiTurnCheck used to keep looping
                     AiTurnCheck = false;
+                    Console.WriteLine("\nYour score is {0} points", playerPoints);
                     Console.Write("\nDo you want to draw a card? (y/n): ");
                     char playerSelection = Console.ReadKey().KeyChar;
 
