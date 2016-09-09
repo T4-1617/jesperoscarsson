@@ -17,13 +17,17 @@ namespace blackjackGame
         static int amountCards = 208;
         static bool gameStatus = true;
         static int playerPoints = 0;
+        static int playerCurrentPoints = 0;
+        static int aiPoints = 0;
+        static int aiCurrentPoints = 0;
+        static bool aiOrPlayer = true; //True = Player, False = AI
+        static bool AiTurnCheck = true;
 
         //Arrays
         static string[,] shoe = new string[amountSuits, amountRanks]; //Even though there are only 4 suits the value 16 is used to simulate 4 decks
         static bool[,] shoePlacementHolder = new bool[amountSuits, amountRanks];
 
         //Functions
-
         //Function for initializing array
         static string[,] shoeInit(string[,] shoe)
         {
@@ -37,16 +41,28 @@ namespace blackjackGame
                 {
                     switch (suitSelector)
                     {
-                        case 1: case 5: case 9: case 13:
+                        case 1:
+                        case 5:
+                        case 9:
+                        case 13:
                             tempSuitHolder = "Hearts";
                             break;
-                        case 2: case 6: case 10: case 14:
+                        case 2:
+                        case 6:
+                        case 10:
+                        case 14:
                             tempSuitHolder = "Diamonds";
                             break;
-                        case 3: case 7: case 11: case 15:
+                        case 3:
+                        case 7:
+                        case 11:
+                        case 15:
                             tempSuitHolder = "Clubs";
                             break;
-                        case 4: case 8: case 12: case 16:
+                        case 4:
+                        case 8:
+                        case 12:
+                        case 16:
                             tempSuitHolder = "Spades";
                             break;
                         default:
@@ -97,19 +113,28 @@ namespace blackjackGame
             switch (tempYvalHolder)
             {
                 case 1: //Decide if 1 = 11 or not
-                    if (11 + playerPoints <= 21)
+                    if (11 + playerCurrentPoints <= 21)
                     {
                         tempYvalHolder = 11;
                     }
                     break;
-                case 11: case 12: case 13:
+                case 11:
+                case 12:
+                case 13:
                     tempYvalHolder = 10;
                     break;
                 default:
                     break;
             }
-
-            playerPoints += tempYvalHolder; //Update point system
+            //Assigns correct player points
+            if (aiOrPlayer)
+            {
+                playerCurrentPoints += tempYvalHolder;
+            }
+            else if (aiOrPlayer == false)
+            {
+                aiCurrentPoints += tempYvalHolder;
+            }
             amountCards--;
             shoePlacementHolder[x, y] = true; //Sets card status to placed
 
@@ -125,47 +150,80 @@ namespace blackjackGame
 
             while (gameStatus)
             {
-                Console.Write("\nDo you want to draw a card? (y/n): ");
-                char playerSelection = Console.ReadKey().KeyChar;
+                aiOrPlayer = false;
+                Console.WriteLine("\n\nComputer draws {0} and now has {1} points", getRndCard(), aiCurrentPoints);
+                aiOrPlayer = true;
 
-                if (amountCards == 0)
+                while (aiOrPlayer) //Player turn
                 {
-                    Console.WriteLine("\nNo cards remaining, ending game");
-                    break;
-                }
-                else if (playerSelection == 'n')
-                {
-                    Console.WriteLine("\nYou got {0} points, do you want to continue? (y/n): ", playerPoints);
-                    char playerNSelection = Console.ReadKey().KeyChar;
+                    AiTurnCheck = false;
+                    Console.Write("\nDo you want to draw a card? (y/n): ");
+                    char playerSelection = Console.ReadKey().KeyChar;
 
-                    if (playerNSelection == 'y')
+                    if (amountCards == 0)
                     {
-                        playerPoints = 0;
-                        Console.WriteLine();
+                        Console.WriteLine("\nNo cards remaining, ending game");
+                        gameStatus = false;
+                        break;
+                    }
+                    else if (playerSelection == 'n') //Subject to change
+                    {
+                        Console.Write("\nYou got {0} points, do you want to continue playing? (y/n): ", playerCurrentPoints);
+                        char playerNSelection = Console.ReadKey().KeyChar;
+
+                        if (playerNSelection == 'y')
+                        {
+                            Console.WriteLine();
+                        }
+                        else if (playerNSelection == 'n')
+                        {
+                            AiTurnCheck = true;
+                        }
+                    }
+                    else if (playerSelection == 'y')
+                    {
+                        Console.WriteLine("\nYou got a {0} and your total points are: {1}", getRndCard(), playerCurrentPoints);
+
+                        if (playerCurrentPoints == 21)
+                        {
+                            Console.WriteLine("\nCongratulations, you've won!!!");
+                            playerCurrentPoints = 0;
+                            aiCurrentPoints = 0;
+                            break;
+                        }
+                        else if (playerCurrentPoints > 21)
+                        {
+                            Console.WriteLine("\nYou've bursted, better luck next time");
+                            playerCurrentPoints = 0;
+                            aiCurrentPoints = 0;
+                            break;
+                        }
                     }
                     else
                     {
-                        break;
+                        Console.WriteLine("\nInvalid entry!");
                     }
-                }
-                else if (playerSelection == 'y')
-                {
-                    Console.WriteLine("\nYou got a {0} and your total points are: {1}", getRndCard(), playerPoints);
 
-                    if (playerPoints == 21)
+                    while (AiTurnCheck) //AI turn
                     {
-                        Console.WriteLine("\nCongratulations, you've won!!!");
-                        break;
+                        aiOrPlayer = false;
+                        Console.WriteLine("\n\nAI draws " + getRndCard());
+
+                        if (aiCurrentPoints == 21)
+                        {
+                            Console.WriteLine("\n\nAI got 21 and wins!");
+                            playerCurrentPoints = 0;
+                            aiCurrentPoints = 0;
+                            break;
+                        }
+                        else if (aiCurrentPoints > 21)
+                        {
+                            Console.WriteLine("\n\nAI got {0} points and burst!", aiCurrentPoints);
+                            playerCurrentPoints = 0;
+                            aiCurrentPoints = 0;                           
+                            break;
+                        }
                     }
-                    else if (playerPoints > 21)
-                    {
-                        playerPoints = 0;
-                        Console.WriteLine("\nYou've lost, better luck next time");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\nInvalid entry!");
                 }
             }
         }
