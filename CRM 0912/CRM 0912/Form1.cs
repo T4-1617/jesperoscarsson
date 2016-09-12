@@ -27,10 +27,11 @@ namespace CRM_0912
         }
 
         //Array for storing customer values
-        System.Collections.ArrayList CustomerList = new System.Collections.ArrayList();
+        List<Customers> CustomerList= new List<Customers>();
         //Variables
         static int IDcounter = 99;
         static int IDNumber = 0;
+        static int customerCount = 0;
 
         //Executes when button is pressed
         private void btnAdd_Click(object sender, EventArgs e)
@@ -49,11 +50,12 @@ namespace CRM_0912
                 //Clear textBoxes
                 txtBoxFName.Text = string.Empty;
                 txtBoxLName.Text = string.Empty;
-                //Updates ListBox
-                updateListBox();
+                //Updates ListBox and customer counter
+                customerCount++;
+                updateListBox();             
             }
         }
-
+        //Updates and types out customer info
         private void updateListBox()
         {
             listBoxMain.Items.Clear();
@@ -62,9 +64,14 @@ namespace CRM_0912
             {
                 listBoxMain.Items.Add(item.FullName());
             }
+
+            txtBoxRegCustomers.Text = customerCount.ToString();
         }
-
-
-
+        //Function for showing list info when clicked
+        private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Customers infoHolder = CustomerList[listBoxMain.SelectedIndex];
+            MessageBox.Show(string.Format("ID: {0}\nFirst name: {1}\nLast name: {2}\nStatus: {3}",infoHolder.CustomerID, infoHolder.FirstName, infoHolder.LastName, infoHolder.Active));
+        }
     }
 }

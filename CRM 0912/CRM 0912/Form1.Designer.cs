@@ -84,14 +84,14 @@
             this.lblUnderLeftListBox.AutoSize = true;
             this.lblUnderLeftListBox.Location = new System.Drawing.Point(5, 269);
             this.lblUnderLeftListBox.Name = "lblUnderLeftListBox";
-            this.lblUnderLeftListBox.Size = new System.Drawing.Size(48, 13);
+            this.lblUnderLeftListBox.Size = new System.Drawing.Size(53, 13);
             this.lblUnderLeftListBox.TabIndex = 4;
-            this.lblUnderLeftListBox.Text = "There is ";
+            this.lblUnderLeftListBox.Text = "There are";
             // 
             // UnderRightListBox
             // 
             this.UnderRightListBox.AutoSize = true;
-            this.UnderRightListBox.Location = new System.Drawing.Point(70, 269);
+            this.UnderRightListBox.Location = new System.Drawing.Point(83, 269);
             this.UnderRightListBox.Name = "UnderRightListBox";
             this.UnderRightListBox.Size = new System.Drawing.Size(107, 13);
             this.UnderRightListBox.TabIndex = 5;
@@ -104,6 +104,7 @@
             this.listBoxMain.Name = "listBoxMain";
             this.listBoxMain.Size = new System.Drawing.Size(276, 95);
             this.listBoxMain.TabIndex = 6;
+            this.listBoxMain.SelectedIndexChanged += new System.EventHandler(this.listBoxMain_SelectedIndexChanged);
             // 
             // txtBoxFName
             // 
@@ -121,7 +122,7 @@
             // 
             // txtBoxRegCustomers
             // 
-            this.txtBoxRegCustomers.Location = new System.Drawing.Point(49, 266);
+            this.txtBoxRegCustomers.Location = new System.Drawing.Point(59, 266);
             this.txtBoxRegCustomers.Name = "txtBoxRegCustomers";
             this.txtBoxRegCustomers.Size = new System.Drawing.Size(21, 20);
             this.txtBoxRegCustomers.TabIndex = 9;
