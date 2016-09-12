@@ -12,5 +12,10 @@ namespace CRM_0912
         public string LastName { get; set; }
         public bool Active { get; set; }
         public int CustomerID { get; set; }
+
+        public string FullName()
+        {
+            return string.Format("{0} {1}", FirstName, LastName);
+        }
     }
 }

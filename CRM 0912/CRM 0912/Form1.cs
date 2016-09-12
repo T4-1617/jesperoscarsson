@@ -17,7 +17,7 @@ namespace CRM_0912
             InitializeComponent();
         }
 
-        //Function for generating unique ID number in the 100-200 range (did not use random since it wasn't specified
+        //Function for generating unique ID number in the 100-200 range (did not use random since it wasn't specified)
         public int getIDNumber()
         {
             IDcounter++;
@@ -46,7 +46,25 @@ namespace CRM_0912
                 customerInfo.CustomerID = getIDNumber();
                 //Add new info to list
                 CustomerList.Add(customerInfo);
+                //Clear textBoxes
+                txtBoxFName.Text = string.Empty;
+                txtBoxLName.Text = string.Empty;
+                //Updates ListBox
+                updateListBox();
             }
         }
+
+        private void updateListBox()
+        {
+            listBoxMain.Items.Clear();
+
+            foreach (Customers item in CustomerList)
+            {
+                listBoxMain.Items.Add(item.FullName());
+            }
+        }
+
+
+
     }
 }
