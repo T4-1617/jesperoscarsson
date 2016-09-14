@@ -8,6 +8,8 @@ namespace _0914_CarProject_0._1
 {
     class Car
     {
+        //Properties
+        public string model { get; set; }
         public int regNumb { get; set; }
         public string propelant { get; set; }
         public string transmission { get; set; }
@@ -15,5 +17,10 @@ namespace _0914_CarProject_0._1
         public int seats { get; set; }
         public int doors { get; set; }
         public string baggageSpace { get; set; }
+        //Override
+        public override string ToString()
+        {
+            return model;
+        }
     }
 }

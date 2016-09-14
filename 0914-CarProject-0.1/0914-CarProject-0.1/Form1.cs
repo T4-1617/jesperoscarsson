@@ -15,6 +15,19 @@ namespace _0914_CarProject_0._1
         public Form1()
         {
             InitializeComponent();
+            System.Collections.ArrayList carList = new System.Collections.ArrayList(); //Holds all car objects
+            //Creates 5 car objects and adds them to listBox & arrayList
+            for (int i = 0; i < 5; i++)
+            {
+                Car car = new Car();
+                car.model = "Placeholder";
+                carList.Add(car);
+            }
+            //Prints all items to listBox
+            for (int i = 0; i < carList.Count; i++)
+            {
+                listBoxCarList.Items.Add(carList[i].ToString());
+            }
         }
     }
 }
