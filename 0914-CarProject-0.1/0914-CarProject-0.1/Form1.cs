@@ -20,7 +20,15 @@ namespace _0914_CarProject_0._1
             for (int i = 0; i < 5; i++)
             {
                 Car car = new Car();
+                //Added placeholder values so program doesn't read null
                 car.model = "Placeholder";
+                car.available = true;
+                car.baggageSpace = "n/a";
+                car.seats = 0;
+                car.doors = 0;
+                car.propelant = "n/a";
+                car.regNumb = "XXX000";
+                
                 carList.Add(car);
             }
             //Prints all items to listBox
@@ -28,6 +36,11 @@ namespace _0914_CarProject_0._1
             {
                 listBoxCarList.Items.Add(carList[i].ToString());
             }
+        }
+
+        private void listBoxCarList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panel.Visible = true;
         }
     }
 }

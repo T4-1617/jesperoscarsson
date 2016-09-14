@@ -10,7 +10,7 @@ namespace _0914_CarProject_0._1
     {
         //Properties
         public string model { get; set; }
-        public int regNumb { get; set; }
+        public string regNumb { get; set; }
         public string propelant { get; set; }
         public string transmission { get; set; }
         public bool available { get; set; }
