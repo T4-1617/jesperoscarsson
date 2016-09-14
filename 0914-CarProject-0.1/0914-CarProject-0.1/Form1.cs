@@ -69,12 +69,11 @@ namespace _0914_CarProject_0._1
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //Allows for editing
+            //Allows for editing, left out regNumb so it can't be edited
             txtAvailable.ReadOnly   = false;
             txtDoors.ReadOnly       = false;
             txtSeats.ReadOnly       = false;
             txtTrans.ReadOnly       = false;
-            txtRegNumb.ReadOnly     = false;
             txtBag.ReadOnly         = false;
             txtModel.ReadOnly       = false;
             txtProp.ReadOnly        = false;
@@ -87,7 +86,6 @@ namespace _0914_CarProject_0._1
             tempforSave.available    = Convert.ToBoolean(txtAvailable.Text);
             tempforSave.doors        = Convert.ToInt32(txtDoors.Text);
             tempforSave.seats        = Convert.ToInt32(txtSeats.Text);
-            tempforSave.regNumb      = txtRegNumb.Text;
             tempforSave.propelant    = txtProp.Text;
             tempforSave.baggageSpace = txtBag.Text;
             tempforSave.transmission = txtTrans.Text;
@@ -96,15 +94,34 @@ namespace _0914_CarProject_0._1
             txtDoors.ReadOnly       = true;
             txtSeats.ReadOnly       = true;
             txtTrans.ReadOnly       = true;
-            txtRegNumb.ReadOnly     = true;
             txtBag.ReadOnly         = true;
             txtModel.ReadOnly       = true;
             txtProp.ReadOnly        = true;
+            //Prints all items to listBox
+            listBoxCarList.Items.Clear();
+            for (int i = 0; i < carList.Count; i++)
+            {
+                listBoxCarList.Items.Add(carList[i].ToString());
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            txtAvailable.ReadOnly = true;
+            txtDoors.ReadOnly = true;
+            txtSeats.ReadOnly = true;
+            txtTrans.ReadOnly = true;
+            txtBag.ReadOnly = true;
+            txtModel.ReadOnly = true;
+            txtProp.ReadOnly = true;
+            //Prints all items to listBox
+            listBoxCarList.Items.Clear();
+            for (int i = 0; i < carList.Count; i++)
+            {
+                listBoxCarList.Items.Add(carList[i].ToString());
+            }
+            //Hides panel
+            panel.Visible = false;
         }
     }
 }
