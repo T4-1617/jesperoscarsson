@@ -57,7 +57,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(187, 166);
+            this.btnAdd.Location = new System.Drawing.Point(183, 113);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -68,7 +68,7 @@
             // rdbtnCustomer
             // 
             this.rdbtnCustomer.AutoSize = true;
-            this.rdbtnCustomer.Location = new System.Drawing.Point(12, 169);
+            this.rdbtnCustomer.Location = new System.Drawing.Point(15, 116);
             this.rdbtnCustomer.Name = "rdbtnCustomer";
             this.rdbtnCustomer.Size = new System.Drawing.Size(69, 17);
             this.rdbtnCustomer.TabIndex = 3;
@@ -79,7 +79,7 @@
             // rdbtnEmployee
             // 
             this.rdbtnEmployee.AutoSize = true;
-            this.rdbtnEmployee.Location = new System.Drawing.Point(87, 169);
+            this.rdbtnEmployee.Location = new System.Drawing.Point(90, 116);
             this.rdbtnEmployee.Name = "rdbtnEmployee";
             this.rdbtnEmployee.Size = new System.Drawing.Size(71, 17);
             this.rdbtnEmployee.TabIndex = 4;
@@ -90,7 +90,7 @@
             // listBoxCustomers
             // 
             this.listBoxCustomers.FormattingEnabled = true;
-            this.listBoxCustomers.Location = new System.Drawing.Point(12, 227);
+            this.listBoxCustomers.Location = new System.Drawing.Point(11, 179);
             this.listBoxCustomers.Name = "listBoxCustomers";
             this.listBoxCustomers.Size = new System.Drawing.Size(259, 108);
             this.listBoxCustomers.TabIndex = 5;
@@ -98,7 +98,7 @@
             // listBoxEmployees
             // 
             this.listBoxEmployees.FormattingEnabled = true;
-            this.listBoxEmployees.Location = new System.Drawing.Point(12, 364);
+            this.listBoxEmployees.Location = new System.Drawing.Point(11, 315);
             this.listBoxEmployees.Name = "listBoxEmployees";
             this.listBoxEmployees.Size = new System.Drawing.Size(259, 108);
             this.listBoxEmployees.TabIndex = 6;
@@ -124,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 211);
+            this.label3.Location = new System.Drawing.Point(12, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 9;
@@ -133,17 +133,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 348);
+            this.label4.Location = new System.Drawing.Point(12, 299);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Employess";
+            this.label4.Text = "Employees";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 516);
+            this.ClientSize = new System.Drawing.Size(282, 429);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
