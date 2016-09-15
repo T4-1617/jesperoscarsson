@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxFName = new System.Windows.Forms.TextBox();
+            this.txtBoxLName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.rdbtnCustomer = new System.Windows.Forms.RadioButton();
             this.rdbtnEmployee = new System.Windows.Forms.RadioButton();
@@ -41,19 +41,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtBoxFName
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtBoxFName.Location = new System.Drawing.Point(74, 34);
+            this.txtBoxFName.Name = "txtBoxFName";
+            this.txtBoxFName.Size = new System.Drawing.Size(158, 20);
+            this.txtBoxFName.TabIndex = 0;
             // 
-            // textBox2
+            // txtBoxLName
             // 
-            this.textBox2.Location = new System.Drawing.Point(74, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtBoxLName.Location = new System.Drawing.Point(74, 70);
+            this.txtBoxLName.Name = "txtBoxLName";
+            this.txtBoxLName.Size = new System.Drawing.Size(158, 20);
+            this.txtBoxLName.TabIndex = 1;
             // 
             // btnAdd
             // 
@@ -153,8 +153,8 @@
             this.Controls.Add(this.rdbtnEmployee);
             this.Controls.Add(this.rdbtnCustomer);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxLName);
+            this.Controls.Add(this.txtBoxFName);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -164,8 +164,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxFName;
+        private System.Windows.Forms.TextBox txtBoxLName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.RadioButton rdbtnCustomer;
         private System.Windows.Forms.RadioButton rdbtnEmployee;

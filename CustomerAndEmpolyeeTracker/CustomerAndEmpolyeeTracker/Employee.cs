@@ -8,5 +8,12 @@ namespace CustomerAndEmpolyeeTracker
 {
     class Employee
     {
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+
+        public string fullNameBackwards
+        {
+            get { return string.Format("{0}, {1}", lastName, firstName); }
+        }
     }
 }
