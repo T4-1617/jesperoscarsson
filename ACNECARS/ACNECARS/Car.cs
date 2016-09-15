@@ -11,5 +11,6 @@ namespace ACNECARS
         public string model { get; set; }
         public string color { get; set; }
         public string make { get; set; }
+        public bool available { get; set; }
     }
 }
