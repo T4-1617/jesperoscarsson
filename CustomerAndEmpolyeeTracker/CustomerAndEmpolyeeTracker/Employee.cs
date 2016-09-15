@@ -15,10 +15,5 @@ namespace CustomerAndEmpolyeeTracker
         {
             get { return string.Format("{0}, {1}", lastName, firstName); }
         }
-
-        public override string ToString()
-        {
-            return string.Format("{0}, {1}", lastName, firstName);
-        }
     }
 }

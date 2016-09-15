@@ -51,9 +51,11 @@ namespace CustomerAndEmpolyeeTracker
                 {
                     case "Customer":
                         listBoxCustomers.Items.Add(arrayContent);
+                        listBoxCustomers.DisplayMember = "fullName";
                         break;
                     case "Employee":
                         listBoxEmployees.Items.Add(arrayContent);
+                        listBoxEmployees.DisplayMember = "fullNameBackwards";
                         break;
                     default:
                         break;
