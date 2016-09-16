@@ -115,6 +115,9 @@ namespace ACNECARS
         private void btnViewCustomers_Click(object sender, EventArgs e)
         {
             pnlCustomerInfo.Visible = !pnlCustomerInfo.Visible;
+            pnlShowCars.Visible = false;
+            pnlReturnCar.Visible = false;
+            pnlAddCar.Visible = false;
         }
 
         //Shows the panel with additional car info when an item in the listBox is pressed
