@@ -55,9 +55,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pnlReturnCar = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.listBoxReturn = new System.Windows.Forms.ListBox();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.pnlShowCars.SuspendLayout();
             this.pnlCarInfo.SuspendLayout();
             this.pnlAddCar.SuspendLayout();
+            this.pnlReturnCar.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -126,6 +131,7 @@
             this.btnReturnCar.TabIndex = 6;
             this.btnReturnCar.Text = "Return car";
             this.btnReturnCar.UseVisualStyleBackColor = true;
+            this.btnReturnCar.Click += new System.EventHandler(this.btnReturnCar_Click);
             // 
             // pnlShowCars
             // 
@@ -321,11 +327,52 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Add a Car";
             // 
+            // pnlReturnCar
+            // 
+            this.pnlReturnCar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlReturnCar.Controls.Add(this.btnReturn);
+            this.pnlReturnCar.Controls.Add(this.listBoxReturn);
+            this.pnlReturnCar.Controls.Add(this.label11);
+            this.pnlReturnCar.Location = new System.Drawing.Point(12, 94);
+            this.pnlReturnCar.Name = "pnlReturnCar";
+            this.pnlReturnCar.Size = new System.Drawing.Size(138, 181);
+            this.pnlReturnCar.TabIndex = 9;
+            this.pnlReturnCar.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Cars to Return";
+            // 
+            // listBoxReturn
+            // 
+            this.listBoxReturn.FormattingEnabled = true;
+            this.listBoxReturn.Location = new System.Drawing.Point(6, 27);
+            this.listBoxReturn.Name = "listBoxReturn";
+            this.listBoxReturn.Size = new System.Drawing.Size(125, 121);
+            this.listBoxReturn.TabIndex = 1;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReturn.Location = new System.Drawing.Point(30, 154);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 2;
+            this.btnReturn.Text = "Return Car";
+            this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 453);
+            this.ClientSize = new System.Drawing.Size(365, 453);
+            this.Controls.Add(this.pnlReturnCar);
             this.Controls.Add(this.pnlAddCar);
             this.Controls.Add(this.pnlShowCars);
             this.Controls.Add(this.btnReturnCar);
@@ -343,6 +390,8 @@
             this.pnlCarInfo.PerformLayout();
             this.pnlAddCar.ResumeLayout(false);
             this.pnlAddCar.PerformLayout();
+            this.pnlReturnCar.ResumeLayout(false);
+            this.pnlReturnCar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +426,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnlReturnCar;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.ListBox listBoxReturn;
+        private System.Windows.Forms.Label label11;
     }
 }
 

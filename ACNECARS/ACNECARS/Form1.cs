@@ -21,11 +21,11 @@ namespace ACNECARS
             //Initialize array
             carsArray = new System.Collections.ArrayList();
             //Add 3 premade vehicles to array
-            carsArray.Add(new Car() { model = "Volvo s60", make = "Volvo", color = "Red", available = true});
-            carsArray.Add(new Car() { model = "Saab 900 Turbo", make = "Saab", color = "Blue", available = true});
+            carsArray.Add(new Car() { model = "Volvo s60", make = "Volvo", color = "Red", available = true });
+            carsArray.Add(new Car() { model = "Saab 900 Turbo", make = "Saab", color = "Blue", available = true });
             carsArray.Add(new Car() { model = "Volvo 240", make = "Volvo", color = "Green", available = true });
             //Add premade cars to listbox and update available cars counter
-            updateListBox();
+            updateListBoxes();
             updateAvailableCarsCounter();
         }
         //Shows the panel with a listBox, makes sure all other panels are closed so there's no clipping issue
@@ -33,6 +33,7 @@ namespace ACNECARS
         {
             pnlShowCars.Visible = !pnlShowCars.Visible;
             pnlAddCar.Visible = false;
+            pnlReturnCar.Visible = false;
         }
         //Shows the panel with additional car info when an item in the listBox is pressed
         private void listBoxAvailableCarsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace ACNECARS
             //Empties labels 
             lblColor.Text = string.Empty; lblModel.Text = string.Empty; lblMake.Text = string.Empty;
             //Updates listbox so the booked car disappears and updates the available cars counter
-            updateListBox();
+            updateListBoxes();
             updateAvailableCarsCounter();
         }
         //Shows new panel Add Car and hides other panels
@@ -65,6 +66,7 @@ namespace ACNECARS
         {
             pnlAddCar.Visible = !pnlAddCar.Visible;
             pnlShowCars.Visible = false;
+            pnlReturnCar.Visible = false;
         }
         //Adds new car to arrayList, updates available cars counter and listBox and clears labels in Add Car Panel
         private void btnCarAdd_Click(object sender, EventArgs e)
@@ -74,7 +76,7 @@ namespace ACNECARS
             //Adds new car object
             carsArray.Add(new Car() { model = txtBoxModel.Text, make = txtBoxMake.Text, color = txtBoxColor.Text, available = true });
             //Updates and clears boxes and labels
-            updateListBox();
+            updateListBoxes();
             updateAvailableCarsCounter();
             txtBoxColor.Text = string.Empty; txtBoxModel.Text = string.Empty; txtBoxMake.Text = string.Empty;
         }
@@ -93,10 +95,11 @@ namespace ACNECARS
 
             lblCarsAvailable.Text = counter.ToString();
         }
-        //Updates list box
-        private void updateListBox()
+        //Updates list boxes for
+        private void updateListBoxes()
         {
             listBoxAvailableCarsList.Items.Clear();
+            listBoxReturn.Items.Clear();
             foreach (Car item in carsArray)
             {
                 if (item.available)
@@ -104,6 +107,33 @@ namespace ACNECARS
                     listBoxAvailableCarsList.Items.Add(item);
                     listBoxAvailableCarsList.DisplayMember = "model";
                 }
+                else if (item.available == false)
+                {
+                    listBoxReturn.Items.Add(item);
+                    listBoxReturn.DisplayMember = "model";
+                }
+            }
+        }
+        //Closes all panels except for the return car one
+        private void btnReturnCar_Click(object sender, EventArgs e)
+        {
+            pnlReturnCar.Visible = !pnlReturnCar.Visible;
+            pnlShowCars.Visible = false;
+            pnlAddCar.Visible = false;
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Car tempCarHolder = (Car)listBoxReturn.SelectedItem;
+            //Check so a car has been selected
+            if (tempCarHolder != null)
+            {
+                //Update car status and listboxes + labels
+                tempCarHolder.available = true;
+                updateAvailableCarsCounter();
+                updateListBoxes();
+                //Shows thank you message
+                MessageBox.Show("Thank you for doing business with us!");
             }
         }
     }
