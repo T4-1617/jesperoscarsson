@@ -12,5 +12,9 @@ namespace ACNECARS
         public string color { get; set; }
         public string make { get; set; }
         public bool available { get; set; }
+        //Holds customer info when car is booked
+        public string fName { get; set; }
+        public string lName { get; set; }
+        public string teleNumb { get; set; }
     }
 }

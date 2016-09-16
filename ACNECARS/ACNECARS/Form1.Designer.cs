@@ -56,13 +56,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlReturnCar = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.listBoxReturn = new System.Windows.Forms.ListBox();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.listBoxReturn = new System.Windows.Forms.ListBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pnlPersDetails = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtBoxFName = new System.Windows.Forms.TextBox();
+            this.txtBoxLName = new System.Windows.Forms.TextBox();
+            this.txtBoxNumber = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.pnlShowCars.SuspendLayout();
             this.pnlCarInfo.SuspendLayout();
             this.pnlAddCar.SuspendLayout();
             this.pnlReturnCar.SuspendLayout();
+            this.pnlPersDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -136,22 +146,23 @@
             // pnlShowCars
             // 
             this.pnlShowCars.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlShowCars.Controls.Add(this.pnlPersDetails);
             this.pnlShowCars.Controls.Add(this.btnBook);
             this.pnlShowCars.Controls.Add(this.pnlCarInfo);
             this.pnlShowCars.Controls.Add(this.lblAvailableCars);
             this.pnlShowCars.Controls.Add(this.listBoxAvailableCarsList);
             this.pnlShowCars.Location = new System.Drawing.Point(12, 94);
             this.pnlShowCars.Name = "pnlShowCars";
-            this.pnlShowCars.Size = new System.Drawing.Size(339, 347);
+            this.pnlShowCars.Size = new System.Drawing.Size(337, 347);
             this.pnlShowCars.TabIndex = 7;
             this.pnlShowCars.Visible = false;
             // 
             // btnBook
             // 
             this.btnBook.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBook.Location = new System.Drawing.Point(180, 190);
+            this.btnBook.Location = new System.Drawing.Point(179, 309);
             this.btnBook.Name = "btnBook";
-            this.btnBook.Size = new System.Drawing.Size(104, 62);
+            this.btnBook.Size = new System.Drawing.Size(104, 32);
             this.btnBook.TabIndex = 3;
             this.btnBook.Text = "Book";
             this.btnBook.UseVisualStyleBackColor = false;
@@ -255,7 +266,7 @@
             this.pnlAddCar.Controls.Add(this.label7);
             this.pnlAddCar.Location = new System.Drawing.Point(12, 94);
             this.pnlAddCar.Name = "pnlAddCar";
-            this.pnlAddCar.Size = new System.Drawing.Size(161, 122);
+            this.pnlAddCar.Size = new System.Drawing.Size(160, 121);
             this.pnlAddCar.TabIndex = 8;
             this.pnlAddCar.Visible = false;
             // 
@@ -339,23 +350,6 @@
             this.pnlReturnCar.TabIndex = 9;
             this.pnlReturnCar.Visible = false;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Cars to Return";
-            // 
-            // listBoxReturn
-            // 
-            this.listBoxReturn.FormattingEnabled = true;
-            this.listBoxReturn.Location = new System.Drawing.Point(6, 27);
-            this.listBoxReturn.Name = "listBoxReturn";
-            this.listBoxReturn.Size = new System.Drawing.Size(125, 121);
-            this.listBoxReturn.TabIndex = 1;
-            // 
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -367,11 +361,111 @@
             this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // listBoxReturn
+            // 
+            this.listBoxReturn.FormattingEnabled = true;
+            this.listBoxReturn.Location = new System.Drawing.Point(6, 27);
+            this.listBoxReturn.Name = "listBoxReturn";
+            this.listBoxReturn.Size = new System.Drawing.Size(125, 121);
+            this.listBoxReturn.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Cars to Return";
+            // 
+            // pnlPersDetails
+            // 
+            this.pnlPersDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlPersDetails.Controls.Add(this.label15);
+            this.pnlPersDetails.Controls.Add(this.txtBoxNumber);
+            this.pnlPersDetails.Controls.Add(this.txtBoxLName);
+            this.pnlPersDetails.Controls.Add(this.txtBoxFName);
+            this.pnlPersDetails.Controls.Add(this.label16);
+            this.pnlPersDetails.Controls.Add(this.label14);
+            this.pnlPersDetails.Controls.Add(this.label13);
+            this.pnlPersDetails.Controls.Add(this.label12);
+            this.pnlPersDetails.Location = new System.Drawing.Point(129, 171);
+            this.pnlPersDetails.Name = "pnlPersDetails";
+            this.pnlPersDetails.Size = new System.Drawing.Size(200, 106);
+            this.pnlPersDetails.TabIndex = 10;
+            this.pnlPersDetails.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 83);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 13);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Telephone*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 58);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Last name*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 35);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "First name*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(83, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Personal Details";
+            // 
+            // txtBoxFName
+            // 
+            this.txtBoxFName.Location = new System.Drawing.Point(72, 32);
+            this.txtBoxFName.Name = "txtBoxFName";
+            this.txtBoxFName.Size = new System.Drawing.Size(125, 20);
+            this.txtBoxFName.TabIndex = 5;
+            // 
+            // txtBoxLName
+            // 
+            this.txtBoxLName.Location = new System.Drawing.Point(72, 55);
+            this.txtBoxLName.Name = "txtBoxLName";
+            this.txtBoxLName.Size = new System.Drawing.Size(125, 20);
+            this.txtBoxLName.TabIndex = 6;
+            // 
+            // txtBoxNumber
+            // 
+            this.txtBoxNumber.Location = new System.Drawing.Point(72, 80);
+            this.txtBoxNumber.Name = "txtBoxNumber";
+            this.txtBoxNumber.Size = new System.Drawing.Size(125, 20);
+            this.txtBoxNumber.TabIndex = 7;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(113, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "* Required fields";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 453);
+            this.ClientSize = new System.Drawing.Size(756, 453);
             this.Controls.Add(this.pnlReturnCar);
             this.Controls.Add(this.pnlAddCar);
             this.Controls.Add(this.pnlShowCars);
@@ -392,6 +486,8 @@
             this.pnlAddCar.PerformLayout();
             this.pnlReturnCar.ResumeLayout(false);
             this.pnlReturnCar.PerformLayout();
+            this.pnlPersDetails.ResumeLayout(false);
+            this.pnlPersDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +526,15 @@
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.ListBox listBoxReturn;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel pnlPersDetails;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtBoxNumber;
+        private System.Windows.Forms.TextBox txtBoxLName;
+        private System.Windows.Forms.TextBox txtBoxFName;
+        private System.Windows.Forms.Label label15;
     }
 }
 

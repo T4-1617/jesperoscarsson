@@ -58,18 +58,26 @@ namespace ACNECARS
         {
             //Create a object pointer that lets us update selected object info
             Car carTemp = (Car)listBoxAvailableCarsList.SelectedItem;
-            if (carTemp != null) //Check so a actual car has been chosen
+            //Check all required fields have been filled
+            if (txtBoxFName.Text != "" && txtBoxLName.Text != "" && txtBoxNumber.Text != "")
             {
-                //Sets status to 'hired' for selected car
-                carTemp.available = false;
-                //Hides extra car info panel and book button
-                pnlCarInfo.Visible = false;
-                btnBook.Visible = false;
-                //Empties labels 
-                lblColor.Text = string.Empty; lblModel.Text = string.Empty; lblMake.Text = string.Empty;
-                //Updates listbox so the booked car disappears and updates the available cars counter
-                updateListBoxes();
-                updateAvailableCarsCounter();
+                if (carTemp != null) //Check so a actual car has been chosen
+                {
+                    //Attach customer info to hired car
+                    carTemp.fName = txtBoxFName.Text; carTemp.lName = txtBoxLName.Text; carTemp.teleNumb = txtBoxNumber.Text;
+                    //Sets status to 'hired' for selected car
+                    carTemp.available = false;
+                    //Hides extra car info panel and book button
+                    pnlCarInfo.Visible = false;
+                    btnBook.Visible = false;
+                    pnlPersDetails.Visible = false;
+                    //Empties labels and txtBoxes
+                    lblColor.Text = string.Empty; lblModel.Text = string.Empty; lblMake.Text = string.Empty;
+                    txtBoxFName.Clear(); txtBoxLName.Clear(); txtBoxNumber.Clear();
+                    //Updates listbox so the booked car disappears and updates the available cars counter
+                    updateListBoxes();
+                    updateAvailableCarsCounter();
+                }
             }
         }
 
@@ -105,10 +113,12 @@ namespace ACNECARS
         private void listBoxAvailableCarsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             pnlCarInfo.Visible = true;
+            pnlPersDetails.Visible = true;
             btnBook.Visible = true;
 
             //Create temp object pointer so we can update carInfo ?POSSIBLE TO GET AROUND?
             Car carTemp = (Car)listBoxAvailableCarsList.SelectedItem;
+            //Check that a car has been selected
             if (carTemp != null)
             {
                 lblModel.Text = carTemp.model; lblMake.Text = carTemp.make; lblColor.Text = carTemp.color;
