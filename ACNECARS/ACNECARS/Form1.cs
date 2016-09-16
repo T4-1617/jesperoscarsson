@@ -35,6 +35,7 @@ namespace ACNECARS
             pnlShowCars.Visible = !pnlShowCars.Visible;
             pnlAddCar.Visible = false;
             pnlReturnCar.Visible = false;
+            pnlCustomerInfo.Visible = false;
         }
 
         //Shows new panel Add Car and hides other panels
@@ -43,6 +44,7 @@ namespace ACNECARS
             pnlAddCar.Visible = !pnlAddCar.Visible;
             pnlShowCars.Visible = false;
             pnlReturnCar.Visible = false;
+            pnlCustomerInfo.Visible = false;
         }
 
         //Closes all panels except for the return car one
@@ -51,6 +53,7 @@ namespace ACNECARS
             pnlReturnCar.Visible = !pnlReturnCar.Visible;
             pnlShowCars.Visible = false;
             pnlAddCar.Visible = false;
+            pnlCustomerInfo.Visible = false;
         }
 
         //Button for booking a selected car from the listBox
@@ -109,6 +112,11 @@ namespace ACNECARS
             }
         }
 
+        private void btnViewCustomers_Click(object sender, EventArgs e)
+        {
+            pnlCustomerInfo.Visible = !pnlCustomerInfo.Visible;
+        }
+
         //Shows the panel with additional car info when an item in the listBox is pressed
         private void listBoxAvailableCarsList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -145,6 +153,8 @@ namespace ACNECARS
         {
             listBoxAvailableCarsList.Items.Clear();
             listBoxReturn.Items.Clear();
+            listBoxCustomerInfo.Items.Clear();
+
             foreach (Car item in carsArray)
             {
                 if (item.available)
@@ -156,6 +166,8 @@ namespace ACNECARS
                 {
                     listBoxReturn.Items.Add(item);
                     listBoxReturn.DisplayMember = "model";
+                    //Updates customerinfo listbox
+                    listBoxCustomerInfo.Items.Add(item.ToString());
                 }
             }
         }

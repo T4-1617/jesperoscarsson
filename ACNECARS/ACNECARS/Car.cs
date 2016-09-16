@@ -16,5 +16,10 @@ namespace ACNECARS
         public string fName { get; set; }
         public string lName { get; set; }
         public string teleNumb { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}  has hired a {2} {3} {4}", fName, lName, color, make, model);
+        }
     }
 }

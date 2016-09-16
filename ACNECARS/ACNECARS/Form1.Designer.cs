@@ -68,11 +68,16 @@
             this.txtBoxLName = new System.Windows.Forms.TextBox();
             this.txtBoxNumber = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnViewCustomers = new System.Windows.Forms.Button();
+            this.pnlCustomerInfo = new System.Windows.Forms.Panel();
+            this.listBoxCustomerInfo = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.pnlShowCars.SuspendLayout();
             this.pnlCarInfo.SuspendLayout();
             this.pnlAddCar.SuspendLayout();
             this.pnlReturnCar.SuspendLayout();
             this.pnlPersDetails.SuspendLayout();
+            this.pnlCustomerInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -145,7 +150,7 @@
             // 
             // pnlShowCars
             // 
-            this.pnlShowCars.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlShowCars.BackColor = System.Drawing.SystemColors.Control;
             this.pnlShowCars.Controls.Add(this.pnlPersDetails);
             this.pnlShowCars.Controls.Add(this.btnBook);
             this.pnlShowCars.Controls.Add(this.pnlCarInfo);
@@ -171,7 +176,7 @@
             // 
             // pnlCarInfo
             // 
-            this.pnlCarInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlCarInfo.BackColor = System.Drawing.SystemColors.Control;
             this.pnlCarInfo.Controls.Add(this.lblColor);
             this.pnlCarInfo.Controls.Add(this.lblMake);
             this.pnlCarInfo.Controls.Add(this.lblModel);
@@ -255,7 +260,7 @@
             // 
             // pnlAddCar
             // 
-            this.pnlAddCar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlAddCar.BackColor = System.Drawing.SystemColors.Control;
             this.pnlAddCar.Controls.Add(this.btnCarAdd);
             this.pnlAddCar.Controls.Add(this.txtBoxColor);
             this.pnlAddCar.Controls.Add(this.txtBoxModel);
@@ -340,7 +345,7 @@
             // 
             // pnlReturnCar
             // 
-            this.pnlReturnCar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlReturnCar.BackColor = System.Drawing.SystemColors.Control;
             this.pnlReturnCar.Controls.Add(this.btnReturn);
             this.pnlReturnCar.Controls.Add(this.listBoxReturn);
             this.pnlReturnCar.Controls.Add(this.label11);
@@ -380,7 +385,7 @@
             // 
             // pnlPersDetails
             // 
-            this.pnlPersDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlPersDetails.BackColor = System.Drawing.SystemColors.Control;
             this.pnlPersDetails.Controls.Add(this.label15);
             this.pnlPersDetails.Controls.Add(this.txtBoxNumber);
             this.pnlPersDetails.Controls.Add(this.txtBoxLName);
@@ -461,11 +466,51 @@
             this.label15.TabIndex = 8;
             this.label15.Text = "* Required fields";
             // 
+            // btnViewCustomers
+            // 
+            this.btnViewCustomers.Location = new System.Drawing.Point(246, 65);
+            this.btnViewCustomers.Name = "btnViewCustomers";
+            this.btnViewCustomers.Size = new System.Drawing.Size(110, 23);
+            this.btnViewCustomers.TabIndex = 10;
+            this.btnViewCustomers.Text = "View Customers";
+            this.btnViewCustomers.UseVisualStyleBackColor = true;
+            this.btnViewCustomers.Click += new System.EventHandler(this.btnViewCustomers_Click);
+            // 
+            // pnlCustomerInfo
+            // 
+            this.pnlCustomerInfo.Controls.Add(this.label17);
+            this.pnlCustomerInfo.Controls.Add(this.listBoxCustomerInfo);
+            this.pnlCustomerInfo.Location = new System.Drawing.Point(12, 94);
+            this.pnlCustomerInfo.Name = "pnlCustomerInfo";
+            this.pnlCustomerInfo.Size = new System.Drawing.Size(337, 208);
+            this.pnlCustomerInfo.TabIndex = 11;
+            this.pnlCustomerInfo.Visible = false;
+            // 
+            // listBoxCustomerInfo
+            // 
+            this.listBoxCustomerInfo.FormattingEnabled = true;
+            this.listBoxCustomerInfo.Location = new System.Drawing.Point(3, 27);
+            this.listBoxCustomerInfo.Name = "listBoxCustomerInfo";
+            this.listBoxCustomerInfo.Size = new System.Drawing.Size(331, 173);
+            this.listBoxCustomerInfo.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Customer Info";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 453);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(358, 453);
+            this.Controls.Add(this.pnlCustomerInfo);
+            this.Controls.Add(this.btnViewCustomers);
             this.Controls.Add(this.pnlReturnCar);
             this.Controls.Add(this.pnlAddCar);
             this.Controls.Add(this.pnlShowCars);
@@ -488,6 +533,8 @@
             this.pnlReturnCar.PerformLayout();
             this.pnlPersDetails.ResumeLayout(false);
             this.pnlPersDetails.PerformLayout();
+            this.pnlCustomerInfo.ResumeLayout(false);
+            this.pnlCustomerInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,6 +582,10 @@
         private System.Windows.Forms.TextBox txtBoxLName;
         private System.Windows.Forms.TextBox txtBoxFName;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnViewCustomers;
+        private System.Windows.Forms.Panel pnlCustomerInfo;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ListBox listBoxCustomerInfo;
     }
 }
 
