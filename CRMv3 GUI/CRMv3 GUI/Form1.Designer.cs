@@ -30,21 +30,23 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.drpDwnBox = new System.Windows.Forms.ComboBox();
+            this.dropDownList = new System.Windows.Forms.ComboBox();
             this.pnlRegisterNewUser = new System.Windows.Forms.Panel();
+            this.lblNumber = new System.Windows.Forms.Label();
+            this.lblLName = new System.Windows.Forms.Label();
+            this.lblFName = new System.Windows.Forms.Label();
+            this.txtBoxNumber = new System.Windows.Forms.TextBox();
+            this.txtBoxLName = new System.Windows.Forms.TextBox();
+            this.txtBoxFName = new System.Windows.Forms.TextBox();
+            this.btnRegisterNewUserSave = new System.Windows.Forms.Button();
+            this.btnRegisterNewUserCancel = new System.Windows.Forms.Button();
             this.lblTellHowManyRegistered = new System.Windows.Forms.Label();
             this.listBoxRegisteredUsers = new System.Windows.Forms.ListBox();
             this.pnlRegisteredUsersInfo = new System.Windows.Forms.Panel();
-            this.btnRegisteredUsersSaveChanges = new System.Windows.Forms.Button();
             this.btnRegisteredUsersCancelChanges = new System.Windows.Forms.Button();
-            this.btnRegisterNewUserCancel = new System.Windows.Forms.Button();
-            this.btnRegisterNewUserSave = new System.Windows.Forms.Button();
-            this.txtBoxFName = new System.Windows.Forms.TextBox();
-            this.txtBoxLName = new System.Windows.Forms.TextBox();
-            this.txtBoxNumber = new System.Windows.Forms.TextBox();
-            this.lblFName = new System.Windows.Forms.Label();
-            this.lblLName = new System.Windows.Forms.Label();
-            this.lblNumber = new System.Windows.Forms.Label();
+            this.btnRegisteredUsersSaveChanges = new System.Windows.Forms.Button();
+            this.lblCompany = new System.Windows.Forms.Label();
+            this.txtBoxCompany = new System.Windows.Forms.TextBox();
             this.pnlRegisterNewUser.SuspendLayout();
             this.pnlRegisteredUsersInfo.SuspendLayout();
             this.SuspendLayout();
@@ -68,17 +70,20 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Jag vill registrera en ny:";
             // 
-            // drpDwnBox
+            // dropDownList
             // 
-            this.drpDwnBox.FormattingEnabled = true;
-            this.drpDwnBox.Location = new System.Drawing.Point(171, 49);
-            this.drpDwnBox.Name = "drpDwnBox";
-            this.drpDwnBox.Size = new System.Drawing.Size(270, 21);
-            this.drpDwnBox.TabIndex = 2;
+            this.dropDownList.FormattingEnabled = true;
+            this.dropDownList.Location = new System.Drawing.Point(171, 49);
+            this.dropDownList.Name = "dropDownList";
+            this.dropDownList.Size = new System.Drawing.Size(270, 21);
+            this.dropDownList.TabIndex = 2;
+            this.dropDownList.SelectedIndexChanged += new System.EventHandler(this.dropDownList_SelectedIndexChanged);
             // 
             // pnlRegisterNewUser
             // 
             this.pnlRegisterNewUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRegisterNewUser.Controls.Add(this.txtBoxCompany);
+            this.pnlRegisterNewUser.Controls.Add(this.lblCompany);
             this.pnlRegisterNewUser.Controls.Add(this.lblNumber);
             this.pnlRegisterNewUser.Controls.Add(this.lblLName);
             this.pnlRegisterNewUser.Controls.Add(this.lblFName);
@@ -91,6 +96,73 @@
             this.pnlRegisterNewUser.Name = "pnlRegisterNewUser";
             this.pnlRegisterNewUser.Size = new System.Drawing.Size(413, 185);
             this.pnlRegisterNewUser.TabIndex = 3;
+            // 
+            // lblNumber
+            // 
+            this.lblNumber.AutoSize = true;
+            this.lblNumber.Location = new System.Drawing.Point(3, 62);
+            this.lblNumber.Name = "lblNumber";
+            this.lblNumber.Size = new System.Drawing.Size(46, 13);
+            this.lblNumber.TabIndex = 7;
+            this.lblNumber.Text = "Nummer";
+            // 
+            // lblLName
+            // 
+            this.lblLName.AutoSize = true;
+            this.lblLName.Location = new System.Drawing.Point(3, 36);
+            this.lblLName.Name = "lblLName";
+            this.lblLName.Size = new System.Drawing.Size(55, 13);
+            this.lblLName.TabIndex = 6;
+            this.lblLName.Text = "Efternamn";
+            // 
+            // lblFName
+            // 
+            this.lblFName.AutoSize = true;
+            this.lblFName.Location = new System.Drawing.Point(3, 10);
+            this.lblFName.Name = "lblFName";
+            this.lblFName.Size = new System.Drawing.Size(48, 13);
+            this.lblFName.TabIndex = 5;
+            this.lblFName.Text = "Förnamn";
+            // 
+            // txtBoxNumber
+            // 
+            this.txtBoxNumber.Location = new System.Drawing.Point(70, 59);
+            this.txtBoxNumber.Name = "txtBoxNumber";
+            this.txtBoxNumber.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxNumber.TabIndex = 4;
+            // 
+            // txtBoxLName
+            // 
+            this.txtBoxLName.Location = new System.Drawing.Point(70, 33);
+            this.txtBoxLName.Name = "txtBoxLName";
+            this.txtBoxLName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLName.TabIndex = 3;
+            // 
+            // txtBoxFName
+            // 
+            this.txtBoxFName.Location = new System.Drawing.Point(70, 7);
+            this.txtBoxFName.Name = "txtBoxFName";
+            this.txtBoxFName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxFName.TabIndex = 2;
+            // 
+            // btnRegisterNewUserSave
+            // 
+            this.btnRegisterNewUserSave.Location = new System.Drawing.Point(254, 157);
+            this.btnRegisterNewUserSave.Name = "btnRegisterNewUserSave";
+            this.btnRegisterNewUserSave.Size = new System.Drawing.Size(75, 23);
+            this.btnRegisterNewUserSave.TabIndex = 1;
+            this.btnRegisterNewUserSave.Text = "Save";
+            this.btnRegisterNewUserSave.UseVisualStyleBackColor = true;
+            // 
+            // btnRegisterNewUserCancel
+            // 
+            this.btnRegisterNewUserCancel.Location = new System.Drawing.Point(335, 157);
+            this.btnRegisterNewUserCancel.Name = "btnRegisterNewUserCancel";
+            this.btnRegisterNewUserCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnRegisterNewUserCancel.TabIndex = 0;
+            this.btnRegisterNewUserCancel.Text = "Cancel";
+            this.btnRegisterNewUserCancel.UseVisualStyleBackColor = true;
+            this.btnRegisterNewUserCancel.Click += new System.EventHandler(this.btnRegisterNewUserCancel_Click);
             // 
             // lblTellHowManyRegistered
             // 
@@ -119,15 +191,6 @@
             this.pnlRegisteredUsersInfo.Size = new System.Drawing.Size(260, 225);
             this.pnlRegisteredUsersInfo.TabIndex = 6;
             // 
-            // btnRegisteredUsersSaveChanges
-            // 
-            this.btnRegisteredUsersSaveChanges.Location = new System.Drawing.Point(101, 199);
-            this.btnRegisteredUsersSaveChanges.Name = "btnRegisteredUsersSaveChanges";
-            this.btnRegisteredUsersSaveChanges.Size = new System.Drawing.Size(75, 23);
-            this.btnRegisteredUsersSaveChanges.TabIndex = 0;
-            this.btnRegisteredUsersSaveChanges.Text = "Save";
-            this.btnRegisteredUsersSaveChanges.UseVisualStyleBackColor = true;
-            // 
             // btnRegisteredUsersCancelChanges
             // 
             this.btnRegisteredUsersCancelChanges.Location = new System.Drawing.Point(182, 199);
@@ -137,71 +200,32 @@
             this.btnRegisteredUsersCancelChanges.Text = "Cancel";
             this.btnRegisteredUsersCancelChanges.UseVisualStyleBackColor = true;
             // 
-            // btnRegisterNewUserCancel
+            // btnRegisteredUsersSaveChanges
             // 
-            this.btnRegisterNewUserCancel.Location = new System.Drawing.Point(335, 157);
-            this.btnRegisterNewUserCancel.Name = "btnRegisterNewUserCancel";
-            this.btnRegisterNewUserCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnRegisterNewUserCancel.TabIndex = 0;
-            this.btnRegisterNewUserCancel.Text = "Cancel";
-            this.btnRegisterNewUserCancel.UseVisualStyleBackColor = true;
+            this.btnRegisteredUsersSaveChanges.Location = new System.Drawing.Point(101, 199);
+            this.btnRegisteredUsersSaveChanges.Name = "btnRegisteredUsersSaveChanges";
+            this.btnRegisteredUsersSaveChanges.Size = new System.Drawing.Size(75, 23);
+            this.btnRegisteredUsersSaveChanges.TabIndex = 0;
+            this.btnRegisteredUsersSaveChanges.Text = "Save";
+            this.btnRegisteredUsersSaveChanges.UseVisualStyleBackColor = true;
             // 
-            // btnRegisterNewUserSave
+            // lblCompany
             // 
-            this.btnRegisterNewUserSave.Location = new System.Drawing.Point(254, 157);
-            this.btnRegisterNewUserSave.Name = "btnRegisterNewUserSave";
-            this.btnRegisterNewUserSave.Size = new System.Drawing.Size(75, 23);
-            this.btnRegisterNewUserSave.TabIndex = 1;
-            this.btnRegisterNewUserSave.Text = "Save";
-            this.btnRegisterNewUserSave.UseVisualStyleBackColor = true;
+            this.lblCompany.AutoSize = true;
+            this.lblCompany.Location = new System.Drawing.Point(3, 88);
+            this.lblCompany.Name = "lblCompany";
+            this.lblCompany.Size = new System.Drawing.Size(43, 13);
+            this.lblCompany.TabIndex = 8;
+            this.lblCompany.Text = "Företag";
+            this.lblCompany.Visible = false;
             // 
-            // txtBoxFName
+            // txtBoxCompany
             // 
-            this.txtBoxFName.Location = new System.Drawing.Point(70, 7);
-            this.txtBoxFName.Name = "txtBoxFName";
-            this.txtBoxFName.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxFName.TabIndex = 2;
-            // 
-            // txtBoxLName
-            // 
-            this.txtBoxLName.Location = new System.Drawing.Point(70, 33);
-            this.txtBoxLName.Name = "txtBoxLName";
-            this.txtBoxLName.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxLName.TabIndex = 3;
-            // 
-            // txtBoxNumber
-            // 
-            this.txtBoxNumber.Location = new System.Drawing.Point(70, 59);
-            this.txtBoxNumber.Name = "txtBoxNumber";
-            this.txtBoxNumber.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxNumber.TabIndex = 4;
-            // 
-            // lblFName
-            // 
-            this.lblFName.AutoSize = true;
-            this.lblFName.Location = new System.Drawing.Point(3, 10);
-            this.lblFName.Name = "lblFName";
-            this.lblFName.Size = new System.Drawing.Size(48, 13);
-            this.lblFName.TabIndex = 5;
-            this.lblFName.Text = "Förnamn";
-            // 
-            // lblLName
-            // 
-            this.lblLName.AutoSize = true;
-            this.lblLName.Location = new System.Drawing.Point(3, 36);
-            this.lblLName.Name = "lblLName";
-            this.lblLName.Size = new System.Drawing.Size(55, 13);
-            this.lblLName.TabIndex = 6;
-            this.lblLName.Text = "Efternamn";
-            // 
-            // lblNumber
-            // 
-            this.lblNumber.AutoSize = true;
-            this.lblNumber.Location = new System.Drawing.Point(3, 62);
-            this.lblNumber.Name = "lblNumber";
-            this.lblNumber.Size = new System.Drawing.Size(46, 13);
-            this.lblNumber.TabIndex = 7;
-            this.lblNumber.Text = "Nummer";
+            this.txtBoxCompany.Location = new System.Drawing.Point(70, 85);
+            this.txtBoxCompany.Name = "txtBoxCompany";
+            this.txtBoxCompany.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxCompany.TabIndex = 9;
+            this.txtBoxCompany.Visible = false;
             // 
             // Form1
             // 
@@ -212,7 +236,7 @@
             this.Controls.Add(this.listBoxRegisteredUsers);
             this.Controls.Add(this.lblTellHowManyRegistered);
             this.Controls.Add(this.pnlRegisterNewUser);
-            this.Controls.Add(this.drpDwnBox);
+            this.Controls.Add(this.dropDownList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -229,7 +253,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox drpDwnBox;
+        private System.Windows.Forms.ComboBox dropDownList;
         private System.Windows.Forms.Panel pnlRegisterNewUser;
         private System.Windows.Forms.Button btnRegisterNewUserSave;
         private System.Windows.Forms.Button btnRegisterNewUserCancel;
@@ -244,6 +268,8 @@
         private System.Windows.Forms.TextBox txtBoxNumber;
         private System.Windows.Forms.TextBox txtBoxLName;
         private System.Windows.Forms.TextBox txtBoxFName;
+        private System.Windows.Forms.TextBox txtBoxCompany;
+        private System.Windows.Forms.Label lblCompany;
     }
 }
 
