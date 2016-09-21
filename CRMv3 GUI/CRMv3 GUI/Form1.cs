@@ -20,7 +20,7 @@ namespace CRMv3_GUI
         static int registeredEmployeeCounter = 0;
         static int registeredSupplierCounter = 0;
         static int employeeIDCounter = 0;
-
+        //Used for storing object info inbetween functions
         Person objectHolder;
 
         //Used to set a customer ID range (Max amount of customers)
@@ -93,46 +93,6 @@ namespace CRMv3_GUI
 
             listBoxUpdate();
 
-        }
-
-        //Updates listBox and counter label 
-        public void listBoxUpdate()
-        {
-            //Update label
-            lblTellHowManyRegistered.Text = string.Format("Du har registrerat {0} kunder, {1} anställda och {2} leverantörer.", registeredCustomerCounter, registeredEmployeeCounter, registeredSupplierCounter);
-            //Update listBox
-            listBoxRegisteredUsers.Items.Clear();
-            foreach (var item in peopleList)
-            {
-                listBoxRegisteredUsers.Items.Add(item);
-                listBoxRegisteredUsers.DisplayMember = "fullName";
-            }
-            //Clear txtBoxes where user left input
-            clearTextBoxes();
-        }
-        //Clears textBoxes where user left input
-        public void clearTextBoxes()
-        {
-            txtBoxFName.Text = string.Empty;
-            txtBoxLName.Text = string.Empty;
-            txtBoxNumber.Text = string.Empty;
-            txtBoxTitel.Text = string.Empty;
-            txtBoxSalary.Text = string.Empty;
-            txtBoxCompany.Text = string.Empty;
-
-            txtBoxRegedCompany.Text = string.Empty;
-            txtBoxRegedSalary.Text = string.Empty;
-            txtBoxRegedTitel.Text = string.Empty;
-            txtBoxRegedFName.Text = string.Empty;
-            txtBoxRegedLName.Text = string.Empty;
-            txtBoxRegedNumb.Text = string.Empty;
-        }
-
-        public int getRndNumb(int minVal, int maxVal)
-        {
-            int rndNumber = random.Next(minVal, (maxVal+1));
-
-            return rndNumber;
         }
 
         private void listBoxRegisteredUsers_SelectedIndexChanged(object sender, EventArgs e)
@@ -266,6 +226,67 @@ namespace CRMv3_GUI
 
             listBoxUpdate();
 
+        }
+        
+        //Updates listBox and counter label 
+        public void listBoxUpdate()
+        {
+            //Update label
+            lblTellHowManyRegistered.Text = string.Format("Du har registrerat {0} kunder, {1} anställda och {2} leverantörer.", registeredCustomerCounter, registeredEmployeeCounter, registeredSupplierCounter);
+            //Update listBox
+            listBoxRegisteredUsers.Items.Clear();
+            foreach (var item in peopleList)
+            {
+                if (item is Customer)
+                {
+                    listBoxRegisteredUsers.Items.Add(item);
+                    listBoxRegisteredUsers.DisplayMember = "fullName";
+                }
+            }
+            foreach (var item in peopleList)
+            {
+                if (item is Employee)
+                {
+                    listBoxRegisteredUsers.Items.Add(item);
+                    listBoxRegisteredUsers.DisplayMember = "fullName";
+                }
+            }
+
+            foreach (var item in peopleList)
+            {
+                if (item is Supplier)
+                {
+                    listBoxRegisteredUsers.Items.Add(item);
+                    listBoxRegisteredUsers.DisplayMember = "fullName";
+                }
+            }
+
+            //Clear txtBoxes where user left input
+            clearTextBoxes();
+        }
+        //Clears textBoxes where user left input
+        public void clearTextBoxes()
+        {
+            txtBoxFName.Text = string.Empty;
+            txtBoxLName.Text = string.Empty;
+            txtBoxNumber.Text = string.Empty;
+            txtBoxTitel.Text = string.Empty;
+            txtBoxSalary.Text = string.Empty;
+            txtBoxCompany.Text = string.Empty;
+
+            txtBoxRegedCompany.Text = string.Empty;
+            txtBoxRegedSalary.Text = string.Empty;
+            txtBoxRegedTitel.Text = string.Empty;
+            txtBoxRegedFName.Text = string.Empty;
+            txtBoxRegedLName.Text = string.Empty;
+            txtBoxRegedNumb.Text = string.Empty;
+        }
+
+        public int getRndNumb(int minVal, int maxVal)
+        {
+            int rndNumber = random.Next(minVal, (maxVal+1));
+
+            return rndNumber;
         }
     }
 }
