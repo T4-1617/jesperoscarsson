@@ -32,6 +32,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dropDownList = new System.Windows.Forms.ComboBox();
             this.pnlRegisterNewUser = new System.Windows.Forms.Panel();
+            this.txtBoxSalary = new System.Windows.Forms.TextBox();
+            this.txtBoxTitel = new System.Windows.Forms.TextBox();
+            this.lblSalary = new System.Windows.Forms.Label();
+            this.lblTitel = new System.Windows.Forms.Label();
             this.txtBoxCompany = new System.Windows.Forms.TextBox();
             this.lblCompany = new System.Windows.Forms.Label();
             this.lblNumber = new System.Windows.Forms.Label();
@@ -47,12 +51,6 @@
             this.pnlRegisteredUsersInfo = new System.Windows.Forms.Panel();
             this.btnRegisteredUsersCancelChanges = new System.Windows.Forms.Button();
             this.btnRegisteredUsersSaveChanges = new System.Windows.Forms.Button();
-            this.lblTitel = new System.Windows.Forms.Label();
-            this.lblSalary = new System.Windows.Forms.Label();
-            this.lblEmpNumb = new System.Windows.Forms.Label();
-            this.txtBoxTitel = new System.Windows.Forms.TextBox();
-            this.txtBoxSalary = new System.Windows.Forms.TextBox();
-            this.txtBoxEmpNumb = new System.Windows.Forms.TextBox();
             this.pnlRegisterNewUser.SuspendLayout();
             this.pnlRegisteredUsersInfo.SuspendLayout();
             this.SuspendLayout();
@@ -88,10 +86,8 @@
             // pnlRegisterNewUser
             // 
             this.pnlRegisterNewUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRegisterNewUser.Controls.Add(this.txtBoxEmpNumb);
             this.pnlRegisterNewUser.Controls.Add(this.txtBoxSalary);
             this.pnlRegisterNewUser.Controls.Add(this.txtBoxTitel);
-            this.pnlRegisterNewUser.Controls.Add(this.lblEmpNumb);
             this.pnlRegisterNewUser.Controls.Add(this.lblSalary);
             this.pnlRegisterNewUser.Controls.Add(this.lblTitel);
             this.pnlRegisterNewUser.Controls.Add(this.txtBoxCompany);
@@ -108,6 +104,42 @@
             this.pnlRegisterNewUser.Name = "pnlRegisterNewUser";
             this.pnlRegisterNewUser.Size = new System.Drawing.Size(413, 185);
             this.pnlRegisterNewUser.TabIndex = 3;
+            // 
+            // txtBoxSalary
+            // 
+            this.txtBoxSalary.Location = new System.Drawing.Point(254, 33);
+            this.txtBoxSalary.Name = "txtBoxSalary";
+            this.txtBoxSalary.Size = new System.Drawing.Size(137, 20);
+            this.txtBoxSalary.TabIndex = 14;
+            this.txtBoxSalary.Visible = false;
+            // 
+            // txtBoxTitel
+            // 
+            this.txtBoxTitel.Location = new System.Drawing.Point(254, 4);
+            this.txtBoxTitel.Name = "txtBoxTitel";
+            this.txtBoxTitel.Size = new System.Drawing.Size(137, 20);
+            this.txtBoxTitel.TabIndex = 13;
+            this.txtBoxTitel.Visible = false;
+            // 
+            // lblSalary
+            // 
+            this.lblSalary.AutoSize = true;
+            this.lblSalary.Location = new System.Drawing.Point(203, 36);
+            this.lblSalary.Name = "lblSalary";
+            this.lblSalary.Size = new System.Drawing.Size(25, 13);
+            this.lblSalary.TabIndex = 11;
+            this.lblSalary.Text = "Lön";
+            this.lblSalary.Visible = false;
+            // 
+            // lblTitel
+            // 
+            this.lblTitel.AutoSize = true;
+            this.lblTitel.Location = new System.Drawing.Point(203, 7);
+            this.lblTitel.Name = "lblTitel";
+            this.lblTitel.Size = new System.Drawing.Size(27, 13);
+            this.lblTitel.TabIndex = 10;
+            this.lblTitel.Text = "Titel";
+            this.lblTitel.Visible = false;
             // 
             // txtBoxCompany
             // 
@@ -240,60 +272,6 @@
             this.btnRegisteredUsersSaveChanges.Text = "Save";
             this.btnRegisteredUsersSaveChanges.UseVisualStyleBackColor = true;
             // 
-            // lblTitel
-            // 
-            this.lblTitel.AutoSize = true;
-            this.lblTitel.Location = new System.Drawing.Point(212, 11);
-            this.lblTitel.Name = "lblTitel";
-            this.lblTitel.Size = new System.Drawing.Size(27, 13);
-            this.lblTitel.TabIndex = 10;
-            this.lblTitel.Text = "Titel";
-            this.lblTitel.Visible = false;
-            // 
-            // lblSalary
-            // 
-            this.lblSalary.AutoSize = true;
-            this.lblSalary.Location = new System.Drawing.Point(203, 36);
-            this.lblSalary.Name = "lblSalary";
-            this.lblSalary.Size = new System.Drawing.Size(25, 13);
-            this.lblSalary.TabIndex = 11;
-            this.lblSalary.Text = "Lön";
-            this.lblSalary.Visible = false;
-            // 
-            // lblEmpNumb
-            // 
-            this.lblEmpNumb.AutoSize = true;
-            this.lblEmpNumb.Location = new System.Drawing.Point(203, 62);
-            this.lblEmpNumb.Name = "lblEmpNumb";
-            this.lblEmpNumb.Size = new System.Drawing.Size(105, 13);
-            this.lblEmpNumb.TabIndex = 12;
-            this.lblEmpNumb.Text = "Anställnings Nummer";
-            this.lblEmpNumb.Visible = false;
-            // 
-            // txtBoxTitel
-            // 
-            this.txtBoxTitel.Location = new System.Drawing.Point(254, 4);
-            this.txtBoxTitel.Name = "txtBoxTitel";
-            this.txtBoxTitel.Size = new System.Drawing.Size(137, 20);
-            this.txtBoxTitel.TabIndex = 13;
-            this.txtBoxTitel.Visible = false;
-            // 
-            // txtBoxSalary
-            // 
-            this.txtBoxSalary.Location = new System.Drawing.Point(254, 33);
-            this.txtBoxSalary.Name = "txtBoxSalary";
-            this.txtBoxSalary.Size = new System.Drawing.Size(137, 20);
-            this.txtBoxSalary.TabIndex = 14;
-            this.txtBoxSalary.Visible = false;
-            // 
-            // txtBoxEmpNumb
-            // 
-            this.txtBoxEmpNumb.Location = new System.Drawing.Point(314, 59);
-            this.txtBoxEmpNumb.Name = "txtBoxEmpNumb";
-            this.txtBoxEmpNumb.Size = new System.Drawing.Size(77, 20);
-            this.txtBoxEmpNumb.TabIndex = 15;
-            this.txtBoxEmpNumb.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,10 +315,8 @@
         private System.Windows.Forms.TextBox txtBoxFName;
         private System.Windows.Forms.TextBox txtBoxCompany;
         private System.Windows.Forms.Label lblCompany;
-        private System.Windows.Forms.Label lblEmpNumb;
         private System.Windows.Forms.Label lblSalary;
         private System.Windows.Forms.Label lblTitel;
-        private System.Windows.Forms.TextBox txtBoxEmpNumb;
         private System.Windows.Forms.TextBox txtBoxSalary;
         private System.Windows.Forms.TextBox txtBoxTitel;
     }

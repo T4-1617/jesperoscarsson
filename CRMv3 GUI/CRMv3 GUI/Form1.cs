@@ -14,15 +14,21 @@ namespace CRMv3_GUI
     {
         //Holds all person objects (Customer, Employee & Supplier)
         System.Collections.ArrayList peopleList;
+        Random random;
         //Global variables
         static int registeredCustomerCounter = 0;
         static int registeredEmployeeCounter = 0;
         static int registeredSupplierCounter = 0;
+        static int employeeIDCounter = 0;
+        //Used to set a customer ID range (Max amount of customers)
+        static int customerMinIDVal = 1;
+        static int customerMaxIDVal = 500;       
 
         public Form1()
         {
             InitializeComponent();
             peopleList = new System.Collections.ArrayList();
+            random = new Random();
             //Fills dropdown list with options
             dropDownList.Items.Add("Kund"); dropDownList.Items.Add("Anställd"); dropDownList.Items.Add("Leverantör");
         }
@@ -48,8 +54,6 @@ namespace CRMv3_GUI
                     txtBoxTitel.Visible = true;
                     lblSalary.Visible = true;
                     txtBoxSalary.Visible = true;
-                    lblEmpNumb.Visible = true;
-                    txtBoxEmpNumb.Visible = true;
                     //Hide others
                     lblCompany.Visible = false;
                     txtBoxCompany.Visible = false;
@@ -61,7 +65,6 @@ namespace CRMv3_GUI
                     //Hide others
                     lblTitel.Visible = false; txtBoxTitel.Visible = false;
                     lblSalary.Visible = false; txtBoxSalary.Visible = false;
-                    lblEmpNumb.Visible = false; txtBoxEmpNumb.Visible = false;
                     break;
                 default:
                     break;
@@ -80,15 +83,16 @@ namespace CRMv3_GUI
             switch (dropDownList.Text)
             {
                 case "Kund":
-                    peopleList.Add(new Customer { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text });
+                    peopleList.Add(new Customer { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = Convert.ToInt32(txtBoxNumber.Text), customerID = getRndNumb(customerMinIDVal, customerMaxIDVal) });
                     registeredCustomerCounter++;
                     break;
                 case "Anställd":
-                    peopleList.Add(new Employee { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text });
+                    employeeIDCounter++;
+                    peopleList.Add(new Employee { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = Convert.ToInt32(txtBoxNumber.Text), EmployeeNumber = employeeIDCounter, titel = txtBoxTitel.Text, salary = Convert.ToDouble(txtBoxSalary.Text) });
                     registeredEmployeeCounter++;
                     break;
                 case "Leverantör":
-                    peopleList.Add(new Supplier { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text, supplierCompany = txtBoxCompany.Text });
+                    peopleList.Add(new Supplier { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = Convert.ToInt32(txtBoxNumber.Text), supplierCompany = txtBoxCompany.Text });
                     registeredSupplierCounter++;
                     break;
                 default:
@@ -120,8 +124,14 @@ namespace CRMv3_GUI
             txtBoxNumber.Text = string.Empty;
             txtBoxTitel.Text = string.Empty;
             txtBoxSalary.Text = string.Empty;
-            txtBoxEmpNumb.Text = string.Empty;
             txtBoxCompany.Text = string.Empty;
+        }
+
+        public int getRndNumb(int minVal, int maxVal)
+        {
+            int rndNumber = random.Next(minVal, (maxVal+1));
+
+            return rndNumber;
         }
     }
 }
