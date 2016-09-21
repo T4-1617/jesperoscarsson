@@ -10,7 +10,7 @@ namespace CRMv3_GUI
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int telephoneNumber { get; set; }
+        public string telephoneNumber { get; set; }
         //Must have values in first & lastname
         public string fullName
         {
