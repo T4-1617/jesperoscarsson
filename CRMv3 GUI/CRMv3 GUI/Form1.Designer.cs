@@ -319,6 +319,7 @@
             this.btnRegisteredUsersSaveChanges.TabIndex = 0;
             this.btnRegisteredUsersSaveChanges.Text = "Save";
             this.btnRegisteredUsersSaveChanges.UseVisualStyleBackColor = true;
+            this.btnRegisteredUsersSaveChanges.Click += new System.EventHandler(this.btnRegisteredUsersSaveChanges_Click);
             // 
             // txtBoxRegedCompany
             // 

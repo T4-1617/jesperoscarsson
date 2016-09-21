@@ -231,5 +231,41 @@ namespace CRMv3_GUI
                 txtBoxRegedCompany.Text = tempSupplier.supplierCompany;
             }
         }
+
+        private void btnRegisteredUsersSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (listBoxRegisteredUsers.SelectedItem is Customer)
+            {
+                Customer tempCustomer = (Customer)objectHolder;
+
+                tempCustomer.firstName = txtBoxRegedFName.Text;
+                tempCustomer.lastName = txtBoxRegedLName.Text;
+                tempCustomer.telephoneNumber = txtBoxRegedNumb.Text;
+            }
+
+            if (listBoxRegisteredUsers.SelectedItem is Employee)
+            {
+                Employee tempEmployee = (Employee)objectHolder;
+
+                tempEmployee.firstName = txtBoxRegedFName.Text;
+                tempEmployee.lastName = txtBoxRegedLName.Text;
+                tempEmployee.telephoneNumber = txtBoxRegedNumb.Text;
+                tempEmployee.salary = Convert.ToDouble(txtBoxRegedSalary.Text);
+                tempEmployee.titel = txtBoxRegedTitel.Text;
+            }
+
+            if (listBoxRegisteredUsers.SelectedItem is Supplier)
+            {
+                Supplier tempSupplier = (Supplier)objectHolder;
+
+                tempSupplier.firstName = txtBoxRegedFName.Text;
+                tempSupplier.lastName = txtBoxRegedLName.Text;
+                tempSupplier.telephoneNumber = txtBoxRegedNumb.Text;
+                tempSupplier.supplierCompany = txtBoxRegedCompany.Text;
+            }
+
+            listBoxUpdate();
+
+        }
     }
 }
