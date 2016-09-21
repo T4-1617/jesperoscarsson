@@ -13,22 +13,21 @@ namespace CRMv3_GUI
     public partial class Form1 : Form
     {
         //Holds all person objects (Customer, Employee & Supplier)
-        System.Collections.ArrayList persons;
-        //Global variables for keeping count of amount of customers
-        int registeredCustomersCounter = 0;
-        int registeredEmployeesCounter = 0;
-        int registeredSuppliersCounter = 0;
-        int customerUniqueIDCounter = 10000;
+        System.Collections.ArrayList peopleList;
+        //Global variables
+        static int registeredCustomerCounter = 0;
+        static int registeredEmployeeCounter = 0;
+        static int registeredSupplierCounter = 0;
 
         public Form1()
         {
             InitializeComponent();
-            persons = new System.Collections.ArrayList();
+            peopleList = new System.Collections.ArrayList();
             //Fills dropdown list with options
             dropDownList.Items.Add("Kund"); dropDownList.Items.Add("Anställd"); dropDownList.Items.Add("Leverantör");
         }
 
-        public void setDefaultValuesNewRegisterWindow()
+        /*public void setDefaultValuesNewRegisterWindow()
         {
             txtBoxCompany.Visible = false; txtBoxCompany.Text = string.Empty; lblCompany.Visible = false;
             txtBoxTitel.Visible = false; txtBoxTitel.Text = string.Empty; lblTitel.Visible = false;
@@ -37,13 +36,10 @@ namespace CRMv3_GUI
             txtBoxFName.Text = string.Empty;
             txtBoxLName.Text = string.Empty;
             txtBoxNumber.Text = string.Empty;
-        }
+        }*/
 
         private void dropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            setDefaultValuesNewRegisterWindow();
-
             switch (dropDownList.Text)
             {
                 case "Anställd":
@@ -54,26 +50,29 @@ namespace CRMv3_GUI
                     txtBoxSalary.Visible = true;
                     lblEmpNumb.Visible = true;
                     txtBoxEmpNumb.Visible = true;
+                    //Hide others
+                    lblCompany.Visible = false;
+                    txtBoxCompany.Visible = false;
                     break;
                 case "Leverantör":
                     //Show relevant extra fields
                     lblCompany.Visible = true;
                     txtBoxCompany.Visible = true;
+                    //Hide others
+                    lblTitel.Visible = false; txtBoxTitel.Visible = false;
+                    lblSalary.Visible = false; txtBoxSalary.Visible = false;
+                    lblEmpNumb.Visible = false; txtBoxEmpNumb.Visible = false;
                     break;
                 default:
-                    //setDefaultValuesNewRegisterWindow();
                     break;
             }
         }
 
         private void btnRegisterNewUserCancel_Click(object sender, EventArgs e)
         {
-            txtBoxFName.Text = string.Empty;
-            txtBoxLName.Text = string.Empty;
-            txtBoxNumber.Text = string.Empty;
-            txtBoxTitel.Text = string.Empty;
-            txtBoxSalary.Text = string.Empty;
-            txtBoxEmpNumb.Text = string.Empty;
+            clearTextBoxes();
+            //Set focus to first name
+            txtBoxFName.Focus();
         }
 
         private void btnRegisterNewUserSave_Click(object sender, EventArgs e)
@@ -81,16 +80,16 @@ namespace CRMv3_GUI
             switch (dropDownList.Text)
             {
                 case "Kund":
-                    persons.Add(new Customer { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text, customerID = (customerUniqueIDCounter+1) });
-                    registeredCustomersCounter++;
+                    peopleList.Add(new Customer { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text });
+                    registeredCustomerCounter++;
                     break;
                 case "Anställd":
-                    persons.Add(new Employee { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text });
-                    registeredEmployeesCounter++;
+                    peopleList.Add(new Employee { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text });
+                    registeredEmployeeCounter++;
                     break;
                 case "Leverantör":
-                    persons.Add(new Supplier { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text, supplierCompany = txtBoxCompany.Text });
-                    registeredSuppliersCounter++;
+                    peopleList.Add(new Supplier { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text, supplierCompany = txtBoxCompany.Text });
+                    registeredSupplierCounter++;
                     break;
                 default:
                     break;
@@ -103,13 +102,26 @@ namespace CRMv3_GUI
         public void listBoxUpdate()
         {
             //Update label
-            lblTellHowManyRegistered.Text = string.Format("Du har registrerat {0} kunder, {1} anställda och {2} leverantörer.", registeredCustomersCounter, registeredEmployeesCounter, registeredSuppliersCounter);
+            lblTellHowManyRegistered.Text = string.Format("Du har registrerat {0} kunder, {1} anställda och {2} leverantörer.", registeredCustomerCounter, registeredEmployeeCounter, registeredSupplierCounter);
             //Update listBox
             listBoxRegisteredUsers.Items.Clear();
-            foreach (Person item in persons)
+            foreach (Person item in peopleList)
             {
                 listBoxRegisteredUsers.Items.Add(item.fullName);
             }
+            //Clear txtBoxes where user left input
+            clearTextBoxes();
+        }
+        //Clears textBoxes where user left input
+        public void clearTextBoxes()
+        {
+            txtBoxFName.Text = string.Empty;
+            txtBoxLName.Text = string.Empty;
+            txtBoxNumber.Text = string.Empty;
+            txtBoxTitel.Text = string.Empty;
+            txtBoxSalary.Text = string.Empty;
+            txtBoxEmpNumb.Text = string.Empty;
+            txtBoxCompany.Text = string.Empty;
         }
     }
 }
