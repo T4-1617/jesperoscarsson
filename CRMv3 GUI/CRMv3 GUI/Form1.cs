@@ -17,18 +17,23 @@ namespace CRMv3_GUI
         //Global variables for keeping count of amount of customers
         int registeredCustomersCounter = 0;
         int registeredEmployeesCounter = 0;
-        int registeredSuppliers = 0;
+        int registeredSuppliersCounter = 0;
+        int customerUniqueIDCounter = 10000;
 
         public Form1()
         {
             InitializeComponent();
+            persons = new System.Collections.ArrayList();
             //Fills dropdown list with options
-            dropDownList.Items.Add("Customer"); dropDownList.Items.Add("Employee"); dropDownList.Items.Add("Supplier");
+            dropDownList.Items.Add("Kund"); dropDownList.Items.Add("Anställd"); dropDownList.Items.Add("Leverantör");
         }
 
-        public virtual void setDefaultValuesNewRegisterWindow()
+        public void setDefaultValuesNewRegisterWindow()
         {
             txtBoxCompany.Visible = false; txtBoxCompany.Text = string.Empty; lblCompany.Visible = false;
+            txtBoxTitel.Visible = false; txtBoxTitel.Text = string.Empty; lblTitel.Visible = false;
+            txtBoxSalary.Visible = false; txtBoxSalary.Text = string.Empty; lblSalary.Visible = false;
+            txtBoxEmpNumb.Visible = false; txtBoxEmpNumb.Text = string.Empty; lblEmpNumb.Visible = false;
             txtBoxFName.Text = string.Empty;
             txtBoxLName.Text = string.Empty;
             txtBoxNumber.Text = string.Empty;
@@ -36,25 +41,28 @@ namespace CRMv3_GUI
 
         private void dropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //check that an actual item has been selected
-            if (dropDownList.SelectedIndex != -1)
-            {
-                //Sets all boxes to default mode
-                setDefaultValuesNewRegisterWindow();
 
-                switch (dropDownList.Text)
-                {
-                    case "Employee":
-                        //TODO Add Employee txtboxes
-                        break;
-                    case "Supplier":
-                        //Show relevant extra fields
-                        lblCompany.Visible = true;
-                        txtBoxCompany.Visible = true;
-                        break;
-                    default:
-                        break;
-                }
+            setDefaultValuesNewRegisterWindow();
+
+            switch (dropDownList.Text)
+            {
+                case "Anställd":
+                    //Show relevant extra fields
+                    lblTitel.Visible = true;
+                    txtBoxTitel.Visible = true;
+                    lblSalary.Visible = true;
+                    txtBoxSalary.Visible = true;
+                    lblEmpNumb.Visible = true;
+                    txtBoxEmpNumb.Visible = true;
+                    break;
+                case "Leverantör":
+                    //Show relevant extra fields
+                    lblCompany.Visible = true;
+                    txtBoxCompany.Visible = true;
+                    break;
+                default:
+                    //setDefaultValuesNewRegisterWindow();
+                    break;
             }
         }
 
@@ -63,8 +71,45 @@ namespace CRMv3_GUI
             txtBoxFName.Text = string.Empty;
             txtBoxLName.Text = string.Empty;
             txtBoxNumber.Text = string.Empty;
-            txtBoxCompany.Text = string.Empty;
-            //Repeat for other txtboxes once added
+            txtBoxTitel.Text = string.Empty;
+            txtBoxSalary.Text = string.Empty;
+            txtBoxEmpNumb.Text = string.Empty;
+        }
+
+        private void btnRegisterNewUserSave_Click(object sender, EventArgs e)
+        {
+            switch (dropDownList.Text)
+            {
+                case "Kund":
+                    persons.Add(new Customer { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text, customerID = (customerUniqueIDCounter+1) });
+                    registeredCustomersCounter++;
+                    break;
+                case "Anställd":
+                    persons.Add(new Employee { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text });
+                    registeredEmployeesCounter++;
+                    break;
+                case "Leverantör":
+                    persons.Add(new Supplier { firstName = txtBoxFName.Text, lastName = txtBoxLName.Text, telephoneNumber = txtBoxNumber.Text, supplierCompany = txtBoxCompany.Text });
+                    registeredSuppliersCounter++;
+                    break;
+                default:
+                    break;
+            }
+
+            listBoxUpdate();
+
+        }
+        //Updates listBox and counter label 
+        public void listBoxUpdate()
+        {
+            //Update label
+            lblTellHowManyRegistered.Text = string.Format("Du har registrerat {0} kunder, {1} anställda och {2} leverantörer.", registeredCustomersCounter, registeredEmployeesCounter, registeredSuppliersCounter);
+            //Update listBox
+            listBoxRegisteredUsers.Items.Clear();
+            foreach (Person item in persons)
+            {
+                listBoxRegisteredUsers.Items.Add(item.fullName);
+            }
         }
     }
 }

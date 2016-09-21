@@ -16,7 +16,6 @@ namespace CRMv3_GUI
         {
             get { return string.Format("{0} {1}", firstName, lastName); }
         }
-
     }
 
     public class Customer : Person
@@ -32,7 +31,9 @@ namespace CRMv3_GUI
 
     public class Employee : Person
     {
-
+        public int salary { get; set; }
+        public int EmployeeNumber { get; set; }
+        public string titel { get; set; }
     }
 
     public class Supplier : Person
