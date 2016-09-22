@@ -70,7 +70,12 @@ namespace _22092016_onlineBanking
             //Check that boxes aren't empty
             if (txtBFName.Text == string.Empty || txtBLName.Text == string.Empty || txtBNumb.Text == string.Empty || txtBAccName.Text == string.Empty || txtBFDeposit.Text == string.Empty)
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("This error is an output when all textboxes are empty, later to be an error");
+            }
+            //Checks that first deposit isn't lower than 1000 kr
+            if (float.Parse(txtBFDeposit.Text) <= 1000)
+            {
+                //Error
             }
         }
     }
