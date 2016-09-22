@@ -12,7 +12,7 @@ namespace CRMv3_GUI
 {
     public partial class Form1 : Form
     {
-        //Holds all person objects (Customer, Employee & Supplier)
+        //Holds all Person objects (Customer, Employee & Supplier)
         System.Collections.ArrayList peopleList;
         Random random;
         //Global variables
@@ -27,6 +27,8 @@ namespace CRMv3_GUI
         static int customerMinIDVal = 1;
         static int customerMaxIDVal = 500;       
 
+        //TODO: Check if customerID has already been taken
+
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace CRMv3_GUI
             //Fills dropdown list with options
             dropDownList.Items.Add("Kund"); dropDownList.Items.Add("Anställd"); dropDownList.Items.Add("Leverantör");
         }
-
+        //This triggers when user selects an option from the combobox
         private void dropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (dropDownList.Text)
@@ -62,14 +64,14 @@ namespace CRMv3_GUI
                     break;
             }
         }
-
+        //This triggers when user presses cancel in upper panel
         private void btnRegisterNewUserCancel_Click(object sender, EventArgs e)
         {
             clearTextBoxes();
             //Set focus to first name
             txtBoxFName.Focus();
         }
-
+        //Creates new object of selected type and saves it to arrayList, updates counters
         private void btnRegisterNewUserSave_Click(object sender, EventArgs e)
         {
             switch (dropDownList.Text)
@@ -94,7 +96,7 @@ namespace CRMv3_GUI
             listBoxUpdate();
 
         }
-
+        //For lower panel, check who has been selected and updates txtBoxes to show correct info
         private void listBoxRegisteredUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             objectHolder = (Person)listBoxRegisteredUsers.SelectedItem;
@@ -157,7 +159,7 @@ namespace CRMv3_GUI
                 txtBoxRegedCompany.Text = tempSupplier.supplierCompany;
             }
         }
-
+        //For lower panel, clears txtBoxes and refills them with info from selected listBox item
         private void btnRegisteredUsersCancelChanges_Click(object sender, EventArgs e)
         {
             clearTextBoxes();
@@ -191,7 +193,7 @@ namespace CRMv3_GUI
                 txtBoxRegedCompany.Text = tempSupplier.supplierCompany;
             }
         }
-
+        //For lower panel, updates info in selected object with newly entered info
         private void btnRegisteredUsersSaveChanges_Click(object sender, EventArgs e)
         {
             if (listBoxRegisteredUsers.SelectedItem is Customer)
@@ -281,7 +283,7 @@ namespace CRMv3_GUI
             txtBoxRegedLName.Text = string.Empty;
             txtBoxRegedNumb.Text = string.Empty;
         }
-
+        //Gives a random value between an interval
         public int getRndNumb(int minVal, int maxVal)
         {
             int rndNumber = random.Next(minVal, (maxVal+1));

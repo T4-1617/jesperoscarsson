@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace CRMv3_GUI
 {
+    //Super class
     public abstract class Person
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string telephoneNumber { get; set; }
-        //Must have values in first & lastname
         public string fullName
         {
             get { return string.Format("{0} {1}", firstName, lastName); }
         }
     }
-
+    //3 sub clasees that holds specific values depending on what was chosen from the combobox
     public class Customer : Person
     {
         private int UniqueCustomerID;
