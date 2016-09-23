@@ -82,8 +82,12 @@ namespace _22092016_onlineBanking
                 //Check if no previous customer has been selected
                 if (listBCustomers.SelectedItem == null)
                 {
-                    listBCustomers.Items.Add(new Customer() { firstName = txtBFName.Text, lastName = txtBLName.Text, phoneNumber = txtBNumb.Text, customerID = getRndNumber(minVal, maxVal) });
+                    int tempID = getRndNumber(minVal, maxVal);
+                    //Adds new customer with Unique ID
+                    listBCustomers.Items.Add(new Customer() { firstName = txtBFName.Text, lastName = txtBLName.Text, phoneNumber = txtBNumb.Text, customerID = tempID });
                     listBCustomers.DisplayMember = "fullName";
+                    //Adds new account that shares the same Unique ID
+                    accountList.Add(new Account() { accountID = tempID, balance = float.Parse(txtBFDeposit.Text) });
                 }
             }
 
