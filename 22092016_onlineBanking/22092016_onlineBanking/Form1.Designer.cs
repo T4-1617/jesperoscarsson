@@ -43,11 +43,6 @@
             this.pnlOpenAcc = new System.Windows.Forms.Panel();
             this.lblOpenAccInfo = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblOpenAccDepositError = new System.Windows.Forms.Label();
-            this.lblAccNameError = new System.Windows.Forms.Label();
-            this.lblNumbError = new System.Windows.Forms.Label();
-            this.lblLNameError = new System.Windows.Forms.Label();
-            this.lblFNameError = new System.Windows.Forms.Label();
             this.btnConfirmAccReg = new System.Windows.Forms.Button();
             this.txtBFDeposit = new System.Windows.Forms.TextBox();
             this.txtBAccName = new System.Windows.Forms.TextBox();
@@ -93,8 +88,8 @@
             this.listBHistory = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
             this.pnlBalance = new System.Windows.Forms.Panel();
-            this.lblPnlBalanceShow = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.lblPnlBalanceShow = new System.Windows.Forms.Label();
             this.pnlOpenAcc.SuspendLayout();
             this.pnlDeposit.SuspendLayout();
             this.pnlWithdraw.SuspendLayout();
@@ -222,11 +217,6 @@
             // 
             this.pnlOpenAcc.Controls.Add(this.lblOpenAccInfo);
             this.pnlOpenAcc.Controls.Add(this.label14);
-            this.pnlOpenAcc.Controls.Add(this.lblOpenAccDepositError);
-            this.pnlOpenAcc.Controls.Add(this.lblAccNameError);
-            this.pnlOpenAcc.Controls.Add(this.lblNumbError);
-            this.pnlOpenAcc.Controls.Add(this.lblLNameError);
-            this.pnlOpenAcc.Controls.Add(this.lblFNameError);
             this.pnlOpenAcc.Controls.Add(this.btnConfirmAccReg);
             this.pnlOpenAcc.Controls.Add(this.txtBFDeposit);
             this.pnlOpenAcc.Controls.Add(this.txtBAccName);
@@ -261,51 +251,6 @@
             this.label14.Size = new System.Drawing.Size(75, 13);
             this.label14.TabIndex = 16;
             this.label14.Text = "Open account";
-            // 
-            // lblOpenAccDepositError
-            // 
-            this.lblOpenAccDepositError.AutoSize = true;
-            this.lblOpenAccDepositError.Location = new System.Drawing.Point(239, 179);
-            this.lblOpenAccDepositError.Name = "lblOpenAccDepositError";
-            this.lblOpenAccDepositError.Size = new System.Drawing.Size(41, 13);
-            this.lblOpenAccDepositError.TabIndex = 15;
-            this.lblOpenAccDepositError.Text = "label13";
-            // 
-            // lblAccNameError
-            // 
-            this.lblAccNameError.AutoSize = true;
-            this.lblAccNameError.Location = new System.Drawing.Point(240, 148);
-            this.lblAccNameError.Name = "lblAccNameError";
-            this.lblAccNameError.Size = new System.Drawing.Size(41, 13);
-            this.lblAccNameError.TabIndex = 14;
-            this.lblAccNameError.Text = "label12";
-            // 
-            // lblNumbError
-            // 
-            this.lblNumbError.AutoSize = true;
-            this.lblNumbError.Location = new System.Drawing.Point(241, 124);
-            this.lblNumbError.Name = "lblNumbError";
-            this.lblNumbError.Size = new System.Drawing.Size(41, 13);
-            this.lblNumbError.TabIndex = 13;
-            this.lblNumbError.Text = "label11";
-            // 
-            // lblLNameError
-            // 
-            this.lblLNameError.AutoSize = true;
-            this.lblLNameError.Location = new System.Drawing.Point(241, 95);
-            this.lblLNameError.Name = "lblLNameError";
-            this.lblLNameError.Size = new System.Drawing.Size(41, 13);
-            this.lblLNameError.TabIndex = 12;
-            this.lblLNameError.Text = "label10";
-            // 
-            // lblFNameError
-            // 
-            this.lblFNameError.AutoSize = true;
-            this.lblFNameError.Location = new System.Drawing.Point(242, 66);
-            this.lblFNameError.Name = "lblFNameError";
-            this.lblFNameError.Size = new System.Drawing.Size(35, 13);
-            this.lblFNameError.TabIndex = 11;
-            this.lblFNameError.Text = "label9";
             // 
             // btnConfirmAccReg
             // 
@@ -724,15 +669,6 @@
             this.pnlBalance.TabIndex = 17;
             this.pnlBalance.Visible = false;
             // 
-            // lblPnlBalanceShow
-            // 
-            this.lblPnlBalanceShow.AutoSize = true;
-            this.lblPnlBalanceShow.Location = new System.Drawing.Point(14, 33);
-            this.lblPnlBalanceShow.Name = "lblPnlBalanceShow";
-            this.lblPnlBalanceShow.Size = new System.Drawing.Size(35, 13);
-            this.lblPnlBalanceShow.TabIndex = 0;
-            this.lblPnlBalanceShow.Text = "label3";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -741,6 +677,15 @@
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 1;
             this.label9.Text = "Balance";
+            // 
+            // lblPnlBalanceShow
+            // 
+            this.lblPnlBalanceShow.AutoSize = true;
+            this.lblPnlBalanceShow.Location = new System.Drawing.Point(14, 33);
+            this.lblPnlBalanceShow.Name = "lblPnlBalanceShow";
+            this.lblPnlBalanceShow.Size = new System.Drawing.Size(35, 13);
+            this.lblPnlBalanceShow.TabIndex = 0;
+            this.lblPnlBalanceShow.Text = "label3";
             // 
             // Form1
             // 
@@ -800,11 +745,6 @@
         private System.Windows.Forms.Panel pnlOpenAcc;
         private System.Windows.Forms.Label lblOpenAccInfo;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblOpenAccDepositError;
-        private System.Windows.Forms.Label lblAccNameError;
-        private System.Windows.Forms.Label lblNumbError;
-        private System.Windows.Forms.Label lblLNameError;
-        private System.Windows.Forms.Label lblFNameError;
         private System.Windows.Forms.Button btnConfirmAccReg;
         private System.Windows.Forms.TextBox txtBFDeposit;
         private System.Windows.Forms.TextBox txtBAccName;

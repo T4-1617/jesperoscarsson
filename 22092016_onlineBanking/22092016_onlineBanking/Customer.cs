@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace _22092016_onlineBanking
 {
-    public abstract class Customer
+    public class Customer
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string phoneNumber { get; set; }
+
+        public int customerID { get; set; }
 
         public string fullName
         {
@@ -18,8 +20,10 @@ namespace _22092016_onlineBanking
         }
     }
 
-    public class Account : Customer
+    public class Account
     {
+        public int accountID;
+
         private float accBalance;
 
         public float balance
@@ -27,10 +31,5 @@ namespace _22092016_onlineBanking
             get { return accBalance; }
             set { accBalance = value; }
         }
-    }
-
-    public class Employee
-    {
-
     }
 }
