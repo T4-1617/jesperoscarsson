@@ -19,7 +19,6 @@ namespace _22092016_onlineBanking
         {
             InitializeComponent();
             peopleList = new System.Collections.ArrayList();
-            //Updates GUI to "customer layout" (this changes if you check that your an employee)
         }
 
         public void CloseAllPnl()
@@ -39,6 +38,27 @@ namespace _22092016_onlineBanking
             {
                 listBCustomers.Items.Add(item);
             }
+        }
+
+        public void UpdateAccountsListBox()
+        {
+            listBAccounts.Items.Clear();
+            listBAccounts.DisplayMember = "AccountName";           
+            Customer temp = (Customer)peopleList[listBCustomers.SelectedIndex];
+            foreach (Account item in temp.GetAccounts())
+            {
+                listBAccounts.Items.Add(item);
+            }
+        }
+
+        public void UpdateGUIToCustomer()
+        {
+            CloseAllPnl();
+            btnBalance.Enabled = true;
+            btnDeposit.Enabled = true;
+            btnWithdraw.Enabled = true;
+            listBAccounts.Visible = true;
+            lblSelectAcc.Visible = true;
         }
 
         private void btnOpenAcc_Click(object sender, EventArgs e)
@@ -74,15 +94,16 @@ namespace _22092016_onlineBanking
         private void btnConfirmAccReg_Click(object sender, EventArgs e)
         {
             //Check if boxes are empty or initial deposit is equal to or greater than 1000
-            if (txtBName.Text != string.Empty && txtBNumb.Text != string.Empty && txtBAccName.Text != string.Empty && txtBFDeposit.Text != string.Empty && decimal.Parse(txtBFDeposit.Text) >= 1000)
+            if (txtBName.Text != string.Empty && txtBNumb.Text != string.Empty && txtBAccName.Text != string.Empty && txtBFDeposit.Text != string.Empty && decimal.Parse(txtBFDeposit.Text) >= 1000 && (rBtnNewAccount.Checked == true || rBtnNewCustomer.Checked == true))
             {
-                if (listBCustomers.SelectedItem != null)
+                if (rBtnNewAccount.Checked == true)
                 {
-                    //Add new account to existing customer
-                    MessageBox.Show("Existing User");
+                    Customer temp = (Customer)listBCustomers.SelectedItem;
+                    temp.CreateAccount(decimal.Parse(txtBFDeposit.Text), txtBAccName.Text);
+                    UpdateAccountsListBox();
                 }
 
-                else
+                if (rBtnNewCustomer.Checked == true)
                 {
                     //Adds new customer and creates one account for him/her
                     Customer temp = new Customer() { Name = txtBName.Text, TelephoneNumber = txtBNumb.Text };
@@ -107,6 +128,36 @@ namespace _22092016_onlineBanking
             CloseAllPnl();
             lblCongratulations.Visible = false;
             btnCloseAccountPage.Visible = false;
+        }
+
+        private void listBCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBCustomers.SelectedItem != null)
+            {
+                listBAccounts.Visible = true;
+                lblSelectAcc.Visible = true;
+                UpdateAccountsListBox();
+            }
+        }
+
+        private void listBAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBAccounts.SelectedItem != null)
+            {
+                UpdateGUIToCustomer(); 
+            }
+        }
+
+        private void rBtnNewAccount_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBName.Enabled = false;
+            txtBNumb.Enabled = false;
+        }
+
+        private void rBtnNewCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBName.Enabled = true;
+            txtBNumb.Enabled = true;
         }
     }
 }

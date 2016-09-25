@@ -91,6 +91,9 @@
             this.lblCongratulations = new System.Windows.Forms.Label();
             this.btnCloseAccountPage = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.rBtnNewCustomer = new System.Windows.Forms.RadioButton();
+            this.rBtnNewAccount = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlOpenAcc.SuspendLayout();
             this.pnlDeposit.SuspendLayout();
             this.pnlWithdraw.SuspendLayout();
@@ -142,6 +145,7 @@
             // 
             // btnDeposit
             // 
+            this.btnDeposit.Enabled = false;
             this.btnDeposit.Location = new System.Drawing.Point(276, 94);
             this.btnDeposit.Name = "btnDeposit";
             this.btnDeposit.Size = new System.Drawing.Size(128, 23);
@@ -152,6 +156,7 @@
             // 
             // btnBalance
             // 
+            this.btnBalance.Enabled = false;
             this.btnBalance.Location = new System.Drawing.Point(142, 94);
             this.btnBalance.Name = "btnBalance";
             this.btnBalance.Size = new System.Drawing.Size(128, 23);
@@ -162,6 +167,7 @@
             // 
             // btnHistory
             // 
+            this.btnHistory.Enabled = false;
             this.btnHistory.Location = new System.Drawing.Point(544, 94);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.Size = new System.Drawing.Size(128, 23);
@@ -172,6 +178,7 @@
             // 
             // btnWithdraw
             // 
+            this.btnWithdraw.Enabled = false;
             this.btnWithdraw.Location = new System.Drawing.Point(410, 94);
             this.btnWithdraw.Name = "btnWithdraw";
             this.btnWithdraw.Size = new System.Drawing.Size(128, 23);
@@ -187,6 +194,7 @@
             this.listBCustomers.Name = "listBCustomers";
             this.listBCustomers.Size = new System.Drawing.Size(230, 69);
             this.listBCustomers.TabIndex = 9;
+            this.listBCustomers.SelectedIndexChanged += new System.EventHandler(this.listBCustomers_SelectedIndexChanged);
             // 
             // listBAccounts
             // 
@@ -196,6 +204,7 @@
             this.listBAccounts.Size = new System.Drawing.Size(234, 69);
             this.listBAccounts.TabIndex = 10;
             this.listBAccounts.Visible = false;
+            this.listBAccounts.SelectedIndexChanged += new System.EventHandler(this.listBAccounts_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -218,6 +227,9 @@
             // 
             // pnlOpenAcc
             // 
+            this.pnlOpenAcc.Controls.Add(this.label5);
+            this.pnlOpenAcc.Controls.Add(this.rBtnNewAccount);
+            this.pnlOpenAcc.Controls.Add(this.rBtnNewCustomer);
             this.pnlOpenAcc.Controls.Add(this.label3);
             this.pnlOpenAcc.Controls.Add(this.btnCloseAccountPage);
             this.pnlOpenAcc.Controls.Add(this.lblCongratulations);
@@ -241,7 +253,7 @@
             // lblOpenAccInfo
             // 
             this.lblOpenAccInfo.AutoSize = true;
-            this.lblOpenAccInfo.Location = new System.Drawing.Point(14, 25);
+            this.lblOpenAccInfo.Location = new System.Drawing.Point(4, 60);
             this.lblOpenAccInfo.Name = "lblOpenAccInfo";
             this.lblOpenAccInfo.Size = new System.Drawing.Size(176, 13);
             this.lblOpenAccInfo.TabIndex = 17;
@@ -258,7 +270,7 @@
             // 
             // btnConfirmAccReg
             // 
-            this.btnConfirmAccReg.Location = new System.Drawing.Point(46, 204);
+            this.btnConfirmAccReg.Location = new System.Drawing.Point(46, 213);
             this.btnConfirmAccReg.Name = "btnConfirmAccReg";
             this.btnConfirmAccReg.Size = new System.Drawing.Size(192, 23);
             this.btnConfirmAccReg.TabIndex = 10;
@@ -268,28 +280,28 @@
             // 
             // txtBFDeposit
             // 
-            this.txtBFDeposit.Location = new System.Drawing.Point(140, 157);
+            this.txtBFDeposit.Location = new System.Drawing.Point(140, 183);
             this.txtBFDeposit.Name = "txtBFDeposit";
             this.txtBFDeposit.Size = new System.Drawing.Size(205, 20);
             this.txtBFDeposit.TabIndex = 9;
             // 
             // txtBAccName
             // 
-            this.txtBAccName.Location = new System.Drawing.Point(140, 131);
+            this.txtBAccName.Location = new System.Drawing.Point(140, 157);
             this.txtBAccName.Name = "txtBAccName";
             this.txtBAccName.Size = new System.Drawing.Size(205, 20);
             this.txtBAccName.TabIndex = 8;
             // 
             // txtBNumb
             // 
-            this.txtBNumb.Location = new System.Drawing.Point(140, 105);
+            this.txtBNumb.Location = new System.Drawing.Point(140, 131);
             this.txtBNumb.Name = "txtBNumb";
             this.txtBNumb.Size = new System.Drawing.Size(205, 20);
             this.txtBNumb.TabIndex = 7;
             // 
             // txtBName
             // 
-            this.txtBName.Location = new System.Drawing.Point(140, 79);
+            this.txtBName.Location = new System.Drawing.Point(140, 105);
             this.txtBName.Name = "txtBName";
             this.txtBName.Size = new System.Drawing.Size(205, 20);
             this.txtBName.TabIndex = 5;
@@ -297,7 +309,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 160);
+            this.label8.Location = new System.Drawing.Point(24, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 13);
             this.label8.TabIndex = 4;
@@ -306,7 +318,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(53, 134);
+            this.label7.Location = new System.Drawing.Point(53, 160);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
             this.label7.TabIndex = 3;
@@ -315,7 +327,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 108);
+            this.label6.Location = new System.Drawing.Point(33, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 13);
             this.label6.TabIndex = 2;
@@ -324,7 +336,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(94, 82);
+            this.label4.Location = new System.Drawing.Point(94, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 0;
@@ -699,11 +711,44 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 42);
+            this.label3.Location = new System.Drawing.Point(4, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(254, 13);
             this.label3.TabIndex = 20;
             this.label3.Text = "that your first deposit is equal to or greater than 1000";
+            // 
+            // rBtnNewCustomer
+            // 
+            this.rBtnNewCustomer.AutoSize = true;
+            this.rBtnNewCustomer.Location = new System.Drawing.Point(17, 36);
+            this.rBtnNewCustomer.Name = "rBtnNewCustomer";
+            this.rBtnNewCustomer.Size = new System.Drawing.Size(93, 17);
+            this.rBtnNewCustomer.TabIndex = 21;
+            this.rBtnNewCustomer.TabStop = true;
+            this.rBtnNewCustomer.Text = "New customer";
+            this.rBtnNewCustomer.UseVisualStyleBackColor = true;
+            this.rBtnNewCustomer.CheckedChanged += new System.EventHandler(this.rBtnNewCustomer_CheckedChanged);
+            // 
+            // rBtnNewAccount
+            // 
+            this.rBtnNewAccount.AutoSize = true;
+            this.rBtnNewAccount.Location = new System.Drawing.Point(111, 36);
+            this.rBtnNewAccount.Name = "rBtnNewAccount";
+            this.rBtnNewAccount.Size = new System.Drawing.Size(89, 17);
+            this.rBtnNewAccount.TabIndex = 22;
+            this.rBtnNewAccount.TabStop = true;
+            this.rBtnNewAccount.Text = "New account";
+            this.rBtnNewAccount.UseVisualStyleBackColor = true;
+            this.rBtnNewAccount.CheckedChanged += new System.EventHandler(this.rBtnNewAccount_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "I want to register a:";
             // 
             // Form1
             // 
@@ -811,6 +856,9 @@
         private System.Windows.Forms.Button btnCloseAccountPage;
         private System.Windows.Forms.Label lblCongratulations;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rBtnNewAccount;
+        private System.Windows.Forms.RadioButton rBtnNewCustomer;
     }
 }
 
