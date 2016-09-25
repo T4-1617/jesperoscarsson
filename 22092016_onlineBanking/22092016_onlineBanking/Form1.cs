@@ -12,31 +12,17 @@ namespace _22092016_onlineBanking
 {
     public partial class Form1 : Form
     {
+
         System.Collections.ArrayList peopleList;
-        System.Collections.ArrayList accountList;
-        Random random;
-        //Global variables declaration
-        int minVal;
-        int maxVal;    
 
         public Form1()
         {
             InitializeComponent();
             peopleList = new System.Collections.ArrayList();
-            accountList = new System.Collections.ArrayList();
-            random = new Random();
-            //Global variables initialization
-            minVal = 1;
-            maxVal = 500000;
+            //Updates GUI to "customer layout" (this changes if you check that your an employee)
         }
 
-        private void btnOpenAcc_Click(object sender, EventArgs e)
-        {
-            closeAllPnl();
-            pnlOpenAcc.Visible = true;
-        }
-
-        private void closeAllPnl()
+        public void CloseAllPnl()
         {
             pnlDeposit.Visible  = false;
             pnlHistory.Visible  = false;
@@ -45,61 +31,82 @@ namespace _22092016_onlineBanking
             pnlBalance.Visible  = false;
         }
 
+        public void UpdateCustomerListBox()
+        {
+            listBCustomers.Items.Clear();
+            listBCustomers.DisplayMember = "Name";
+            foreach (Customer item in peopleList)
+            {
+                listBCustomers.Items.Add(item);
+            }
+        }
+
+        private void btnOpenAcc_Click(object sender, EventArgs e)
+        {
+            CloseAllPnl();
+            pnlOpenAcc.Visible = true;
+        }       
+
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            closeAllPnl();
+            CloseAllPnl();
             pnlDeposit.Visible = true;
         }
 
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
-            closeAllPnl();
+            CloseAllPnl();
             pnlWithdraw.Visible = true;
         }
 
         private void btnBalance_Click(object sender, EventArgs e)
         {
-            closeAllPnl();
+            CloseAllPnl();
             pnlBalance.Visible = true;
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
-            closeAllPnl();
+            CloseAllPnl();
             pnlHistory.Visible = true;
         }
 
         private void btnConfirmAccReg_Click(object sender, EventArgs e)
         {
             //Check if boxes are empty or initial deposit is equal to or greater than 1000
-            if (txtBFName.Text != string.Empty && txtBLName.Text != string.Empty && txtBNumb.Text != string.Empty && txtBAccName.Text != string.Empty && txtBFDeposit.Text != string.Empty && float.Parse(txtBFDeposit.Text) >= 1000)
+            if (txtBName.Text != string.Empty && txtBNumb.Text != string.Empty && txtBAccName.Text != string.Empty && txtBFDeposit.Text != string.Empty && decimal.Parse(txtBFDeposit.Text) >= 1000)
             {
                 if (listBCustomers.SelectedItem != null)
                 {
                     //Add new account to existing customer
-                    MessageBox.Show("Test");
+                    MessageBox.Show("Existing User");
                 }
-                //Check if no previous customer has been selected
-                if (listBCustomers.SelectedItem == null)
+
+                else
                 {
-                    int tempID = getRndNumber(minVal, maxVal);
-                    //Adds new customer with Unique ID
-                    listBCustomers.Items.Add(new Customer() { firstName = txtBFName.Text, lastName = txtBLName.Text, phoneNumber = txtBNumb.Text, customerID = tempID });
-                    listBCustomers.DisplayMember = "fullName";
-                    //Adds new account that shares the same Unique ID
-                    accountList.Add(new Account() { accountID = tempID, balance = float.Parse(txtBFDeposit.Text) });
+                    //Adds new customer and creates one account for him/her
+                    Customer temp = new Customer() { Name = txtBName.Text, TelephoneNumber = txtBNumb.Text };
+                    temp.CreateAccount(decimal.Parse(txtBFDeposit.Text), txtBAccName.Text);
+                    peopleList.Add(temp);
+                    UpdateCustomerListBox();
                 }
+
+                lblCongratulations.Visible = true;
+                btnCloseAccountPage.Visible = true;
+
             }
 
             else
             {
-                 MessageBox.Show("Could not add account, one of the requirements were not met. Try not leaving anything empty/deposit less than 1000kr.");
+                 MessageBox.Show("Could not add account, one of the requirements were not met. Try not leaving anything empty/deposit less than 1000!");
             }
         }
 
-        public int getRndNumber(int minVal, int maxVal)
+        private void btnCloseAccountPage_Click(object sender, EventArgs e)
         {
-            return random.Next(minVal, (maxVal + 1));
+            CloseAllPnl();
+            lblCongratulations.Visible = false;
+            btnCloseAccountPage.Visible = false;
         }
     }
 }
