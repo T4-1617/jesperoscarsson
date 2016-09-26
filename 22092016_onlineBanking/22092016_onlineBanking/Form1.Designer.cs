@@ -41,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblSelectAcc = new System.Windows.Forms.Label();
             this.pnlOpenAcc = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rBtnNewAccount = new System.Windows.Forms.RadioButton();
+            this.rBtnNewCustomer = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnCloseAccountPage = new System.Windows.Forms.Button();
+            this.lblCongratulations = new System.Windows.Forms.Label();
             this.lblOpenAccInfo = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnConfirmAccReg = new System.Windows.Forms.Button();
@@ -56,49 +62,32 @@
             this.lblDepositError = new System.Windows.Forms.Label();
             this.btnDepositCancel = new System.Windows.Forms.Button();
             this.btnDepositAccept = new System.Windows.Forms.Button();
-            this.lblDepositNewBalance = new System.Windows.Forms.Label();
             this.lblDepositCurrentBalance = new System.Windows.Forms.Label();
             this.txtBDepositAmount = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pnlWithdraw = new System.Windows.Forms.Panel();
-            this.lblWithdrawError = new System.Windows.Forms.Label();
             this.btnWithdrawCancel = new System.Windows.Forms.Button();
             this.btnWithdrawAccept = new System.Windows.Forms.Button();
-            this.lblWithdrawNewBalance = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.lblWithdrawCurrentBalance = new System.Windows.Forms.Label();
             this.txtBWithdrawAmount = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.pnlHistory = new System.Windows.Forms.Panel();
             this.lblHistoryError = new System.Windows.Forms.Label();
-            this.pnlHistoryDetails = new System.Windows.Forms.Panel();
             this.lblHistoryDifference = new System.Windows.Forms.Label();
-            this.lblHistoryBalanceAfter = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.lblHistoryBalanceBefore = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.listBHistory = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
             this.pnlBalance = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblPnlBalanceShow = new System.Windows.Forms.Label();
-            this.lblCongratulations = new System.Windows.Forms.Label();
-            this.btnCloseAccountPage = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rBtnNewCustomer = new System.Windows.Forms.RadioButton();
-            this.rBtnNewAccount = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblBalanceShow = new System.Windows.Forms.Label();
             this.pnlOpenAcc.SuspendLayout();
             this.pnlDeposit.SuspendLayout();
             this.pnlWithdraw.SuspendLayout();
             this.pnlHistory.SuspendLayout();
-            this.pnlHistoryDetails.SuspendLayout();
             this.pnlBalance.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +103,7 @@
             // rBtnCustomer
             // 
             this.rBtnCustomer.AutoSize = true;
+            this.rBtnCustomer.Checked = true;
             this.rBtnCustomer.Location = new System.Drawing.Point(98, 12);
             this.rBtnCustomer.Name = "rBtnCustomer";
             this.rBtnCustomer.Size = new System.Drawing.Size(69, 17);
@@ -121,6 +111,7 @@
             this.rBtnCustomer.TabStop = true;
             this.rBtnCustomer.Text = "Customer";
             this.rBtnCustomer.UseVisualStyleBackColor = true;
+            this.rBtnCustomer.CheckedChanged += new System.EventHandler(this.rBtnCustomer_CheckedChanged);
             // 
             // rBtnEmployee
             // 
@@ -129,9 +120,9 @@
             this.rBtnEmployee.Name = "rBtnEmployee";
             this.rBtnEmployee.Size = new System.Drawing.Size(71, 17);
             this.rBtnEmployee.TabIndex = 2;
-            this.rBtnEmployee.TabStop = true;
             this.rBtnEmployee.Text = "Employee";
             this.rBtnEmployee.UseVisualStyleBackColor = true;
+            this.rBtnEmployee.CheckedChanged += new System.EventHandler(this.rBtnEmployee_CheckedChanged);
             // 
             // btnOpenAcc
             // 
@@ -250,6 +241,69 @@
             this.pnlOpenAcc.TabIndex = 13;
             this.pnlOpenAcc.Visible = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "I want to register a:";
+            // 
+            // rBtnNewAccount
+            // 
+            this.rBtnNewAccount.AutoSize = true;
+            this.rBtnNewAccount.Location = new System.Drawing.Point(111, 36);
+            this.rBtnNewAccount.Name = "rBtnNewAccount";
+            this.rBtnNewAccount.Size = new System.Drawing.Size(89, 17);
+            this.rBtnNewAccount.TabIndex = 22;
+            this.rBtnNewAccount.TabStop = true;
+            this.rBtnNewAccount.Text = "New account";
+            this.rBtnNewAccount.UseVisualStyleBackColor = true;
+            this.rBtnNewAccount.CheckedChanged += new System.EventHandler(this.rBtnNewAccount_CheckedChanged);
+            // 
+            // rBtnNewCustomer
+            // 
+            this.rBtnNewCustomer.AutoSize = true;
+            this.rBtnNewCustomer.Location = new System.Drawing.Point(17, 36);
+            this.rBtnNewCustomer.Name = "rBtnNewCustomer";
+            this.rBtnNewCustomer.Size = new System.Drawing.Size(93, 17);
+            this.rBtnNewCustomer.TabIndex = 21;
+            this.rBtnNewCustomer.TabStop = true;
+            this.rBtnNewCustomer.Text = "New customer";
+            this.rBtnNewCustomer.UseVisualStyleBackColor = true;
+            this.rBtnNewCustomer.CheckedChanged += new System.EventHandler(this.rBtnNewCustomer_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(254, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "that your first deposit is equal to or greater than 1000";
+            // 
+            // btnCloseAccountPage
+            // 
+            this.btnCloseAccountPage.Location = new System.Drawing.Point(458, 96);
+            this.btnCloseAccountPage.Name = "btnCloseAccountPage";
+            this.btnCloseAccountPage.Size = new System.Drawing.Size(109, 23);
+            this.btnCloseAccountPage.TabIndex = 19;
+            this.btnCloseAccountPage.Text = "Close this page";
+            this.btnCloseAccountPage.UseVisualStyleBackColor = true;
+            this.btnCloseAccountPage.Visible = false;
+            this.btnCloseAccountPage.Click += new System.EventHandler(this.btnCloseAccountPage_Click);
+            // 
+            // lblCongratulations
+            // 
+            this.lblCongratulations.AutoSize = true;
+            this.lblCongratulations.Location = new System.Drawing.Point(427, 70);
+            this.lblCongratulations.Name = "lblCongratulations";
+            this.lblCongratulations.Size = new System.Drawing.Size(165, 13);
+            this.lblCongratulations.TabIndex = 18;
+            this.lblCongratulations.Text = "Congratulations! Account created";
+            this.lblCongratulations.Visible = false;
+            // 
             // lblOpenAccInfo
             // 
             this.lblOpenAccInfo.AutoSize = true;
@@ -347,16 +401,14 @@
             this.pnlDeposit.Controls.Add(this.lblDepositError);
             this.pnlDeposit.Controls.Add(this.btnDepositCancel);
             this.pnlDeposit.Controls.Add(this.btnDepositAccept);
-            this.pnlDeposit.Controls.Add(this.lblDepositNewBalance);
             this.pnlDeposit.Controls.Add(this.lblDepositCurrentBalance);
             this.pnlDeposit.Controls.Add(this.txtBDepositAmount);
-            this.pnlDeposit.Controls.Add(this.label19);
             this.pnlDeposit.Controls.Add(this.label18);
             this.pnlDeposit.Controls.Add(this.label17);
             this.pnlDeposit.Controls.Add(this.label16);
-            this.pnlDeposit.Location = new System.Drawing.Point(727, 24);
+            this.pnlDeposit.Location = new System.Drawing.Point(10, 134);
             this.pnlDeposit.Name = "pnlDeposit";
-            this.pnlDeposit.Size = new System.Drawing.Size(286, 178);
+            this.pnlDeposit.Size = new System.Drawing.Size(228, 147);
             this.pnlDeposit.TabIndex = 14;
             this.pnlDeposit.Visible = false;
             // 
@@ -371,35 +423,28 @@
             // 
             // btnDepositCancel
             // 
-            this.btnDepositCancel.Location = new System.Drawing.Point(109, 145);
+            this.btnDepositCancel.Location = new System.Drawing.Point(87, 116);
             this.btnDepositCancel.Name = "btnDepositCancel";
             this.btnDepositCancel.Size = new System.Drawing.Size(75, 23);
             this.btnDepositCancel.TabIndex = 8;
             this.btnDepositCancel.Text = "Cancel";
             this.btnDepositCancel.UseVisualStyleBackColor = true;
+            this.btnDepositCancel.Click += new System.EventHandler(this.btnDepositCancel_Click);
             // 
             // btnDepositAccept
             // 
-            this.btnDepositAccept.Location = new System.Drawing.Point(28, 145);
+            this.btnDepositAccept.Location = new System.Drawing.Point(6, 116);
             this.btnDepositAccept.Name = "btnDepositAccept";
             this.btnDepositAccept.Size = new System.Drawing.Size(75, 23);
             this.btnDepositAccept.TabIndex = 7;
             this.btnDepositAccept.Text = "Accept";
             this.btnDepositAccept.UseVisualStyleBackColor = true;
-            // 
-            // lblDepositNewBalance
-            // 
-            this.lblDepositNewBalance.AutoSize = true;
-            this.lblDepositNewBalance.Location = new System.Drawing.Point(111, 118);
-            this.lblDepositNewBalance.Name = "lblDepositNewBalance";
-            this.lblDepositNewBalance.Size = new System.Drawing.Size(41, 13);
-            this.lblDepositNewBalance.TabIndex = 6;
-            this.lblDepositNewBalance.Text = "label21";
+            this.btnDepositAccept.Click += new System.EventHandler(this.btnDepositAccept_Click);
             // 
             // lblDepositCurrentBalance
             // 
             this.lblDepositCurrentBalance.AutoSize = true;
-            this.lblDepositCurrentBalance.Location = new System.Drawing.Point(111, 41);
+            this.lblDepositCurrentBalance.Location = new System.Drawing.Point(94, 41);
             this.lblDepositCurrentBalance.Name = "lblDepositCurrentBalance";
             this.lblDepositCurrentBalance.Size = new System.Drawing.Size(41, 13);
             this.lblDepositCurrentBalance.TabIndex = 5;
@@ -407,37 +452,28 @@
             // 
             // txtBDepositAmount
             // 
-            this.txtBDepositAmount.Location = new System.Drawing.Point(113, 77);
+            this.txtBDepositAmount.Location = new System.Drawing.Point(97, 71);
             this.txtBDepositAmount.Name = "txtBDepositAmount";
             this.txtBDepositAmount.Size = new System.Drawing.Size(100, 20);
             this.txtBDepositAmount.TabIndex = 4;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 118);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(70, 13);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "New balance";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(5, 73);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(81, 13);
+            this.label18.Size = new System.Drawing.Size(84, 13);
             this.label18.TabIndex = 2;
-            this.label18.Text = "Deposit amount";
+            this.label18.Text = "Deposit amount:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(5, 41);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 13);
+            this.label17.Size = new System.Drawing.Size(86, 13);
             this.label17.TabIndex = 1;
-            this.label17.Text = "Current Balance";
+            this.label17.Text = "Current Balance:";
             // 
             // label16
             // 
@@ -450,57 +486,38 @@
             // 
             // pnlWithdraw
             // 
-            this.pnlWithdraw.Controls.Add(this.lblWithdrawError);
             this.pnlWithdraw.Controls.Add(this.btnWithdrawCancel);
             this.pnlWithdraw.Controls.Add(this.btnWithdrawAccept);
-            this.pnlWithdraw.Controls.Add(this.lblWithdrawNewBalance);
             this.pnlWithdraw.Controls.Add(this.label22);
             this.pnlWithdraw.Controls.Add(this.lblWithdrawCurrentBalance);
             this.pnlWithdraw.Controls.Add(this.txtBWithdrawAmount);
             this.pnlWithdraw.Controls.Add(this.label27);
-            this.pnlWithdraw.Controls.Add(this.label25);
             this.pnlWithdraw.Controls.Add(this.label26);
-            this.pnlWithdraw.Location = new System.Drawing.Point(683, 130);
+            this.pnlWithdraw.Location = new System.Drawing.Point(10, 134);
             this.pnlWithdraw.Name = "pnlWithdraw";
-            this.pnlWithdraw.Size = new System.Drawing.Size(285, 183);
+            this.pnlWithdraw.Size = new System.Drawing.Size(216, 183);
             this.pnlWithdraw.TabIndex = 15;
             this.pnlWithdraw.Visible = false;
             // 
-            // lblWithdrawError
-            // 
-            this.lblWithdrawError.AutoSize = true;
-            this.lblWithdrawError.Location = new System.Drawing.Point(7, 14);
-            this.lblWithdrawError.Name = "lblWithdrawError";
-            this.lblWithdrawError.Size = new System.Drawing.Size(140, 13);
-            this.lblWithdrawError.TabIndex = 22;
-            this.lblWithdrawError.Text = "need to select account error";
-            // 
             // btnWithdrawCancel
             // 
-            this.btnWithdrawCancel.Location = new System.Drawing.Point(109, 150);
+            this.btnWithdrawCancel.Location = new System.Drawing.Point(89, 157);
             this.btnWithdrawCancel.Name = "btnWithdrawCancel";
             this.btnWithdrawCancel.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawCancel.TabIndex = 10;
             this.btnWithdrawCancel.Text = "Cancel";
             this.btnWithdrawCancel.UseVisualStyleBackColor = true;
+            this.btnWithdrawCancel.Click += new System.EventHandler(this.btnWithdrawCancel_Click);
             // 
             // btnWithdrawAccept
             // 
-            this.btnWithdrawAccept.Location = new System.Drawing.Point(28, 150);
+            this.btnWithdrawAccept.Location = new System.Drawing.Point(8, 156);
             this.btnWithdrawAccept.Name = "btnWithdrawAccept";
             this.btnWithdrawAccept.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawAccept.TabIndex = 9;
             this.btnWithdrawAccept.Text = "Accept";
             this.btnWithdrawAccept.UseVisualStyleBackColor = true;
-            // 
-            // lblWithdrawNewBalance
-            // 
-            this.lblWithdrawNewBalance.AutoSize = true;
-            this.lblWithdrawNewBalance.Location = new System.Drawing.Point(111, 113);
-            this.lblWithdrawNewBalance.Name = "lblWithdrawNewBalance";
-            this.lblWithdrawNewBalance.Size = new System.Drawing.Size(41, 13);
-            this.lblWithdrawNewBalance.TabIndex = 14;
-            this.lblWithdrawNewBalance.Text = "label23";
+            this.btnWithdrawAccept.Click += new System.EventHandler(this.btnWithdrawAccept_Click);
             // 
             // label22
             // 
@@ -514,7 +531,7 @@
             // lblWithdrawCurrentBalance
             // 
             this.lblWithdrawCurrentBalance.AutoSize = true;
-            this.lblWithdrawCurrentBalance.Location = new System.Drawing.Point(111, 36);
+            this.lblWithdrawCurrentBalance.Location = new System.Drawing.Point(100, 36);
             this.lblWithdrawCurrentBalance.Name = "lblWithdrawCurrentBalance";
             this.lblWithdrawCurrentBalance.Size = new System.Drawing.Size(41, 13);
             this.lblWithdrawCurrentBalance.TabIndex = 13;
@@ -522,7 +539,7 @@
             // 
             // txtBWithdrawAmount
             // 
-            this.txtBWithdrawAmount.Location = new System.Drawing.Point(118, 72);
+            this.txtBWithdrawAmount.Location = new System.Drawing.Point(103, 58);
             this.txtBWithdrawAmount.Name = "txtBWithdrawAmount";
             this.txtBWithdrawAmount.Size = new System.Drawing.Size(100, 20);
             this.txtBWithdrawAmount.TabIndex = 12;
@@ -532,115 +549,58 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(5, 36);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(83, 13);
+            this.label27.Size = new System.Drawing.Size(86, 13);
             this.label27.TabIndex = 9;
-            this.label27.Text = "Current Balance";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(7, 113);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(70, 13);
-            this.label25.TabIndex = 11;
-            this.label25.Text = "New balance";
+            this.label27.Text = "Current Balance:";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(5, 68);
+            this.label26.Location = new System.Drawing.Point(4, 61);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(90, 13);
+            this.label26.Size = new System.Drawing.Size(93, 13);
             this.label26.TabIndex = 10;
-            this.label26.Text = "Withdraw amount";
+            this.label26.Text = "Withdraw amount:";
             // 
             // pnlHistory
             // 
+            this.pnlHistory.Controls.Add(this.lblHistoryDifference);
             this.pnlHistory.Controls.Add(this.lblHistoryError);
-            this.pnlHistory.Controls.Add(this.pnlHistoryDetails);
+            this.pnlHistory.Controls.Add(this.label31);
             this.pnlHistory.Controls.Add(this.listBHistory);
             this.pnlHistory.Controls.Add(this.label28);
-            this.pnlHistory.Location = new System.Drawing.Point(703, 35);
+            this.pnlHistory.Location = new System.Drawing.Point(8, 130);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(354, 240);
+            this.pnlHistory.Size = new System.Drawing.Size(350, 240);
             this.pnlHistory.TabIndex = 16;
             this.pnlHistory.Visible = false;
             // 
             // lblHistoryError
             // 
             this.lblHistoryError.AutoSize = true;
-            this.lblHistoryError.Location = new System.Drawing.Point(16, 31);
+            this.lblHistoryError.Location = new System.Drawing.Point(16, 22);
             this.lblHistoryError.Name = "lblHistoryError";
-            this.lblHistoryError.Size = new System.Drawing.Size(140, 13);
+            this.lblHistoryError.Size = new System.Drawing.Size(204, 13);
             this.lblHistoryError.TabIndex = 16;
-            this.lblHistoryError.Text = "need to select account error";
-            // 
-            // pnlHistoryDetails
-            // 
-            this.pnlHistoryDetails.Controls.Add(this.lblHistoryDifference);
-            this.pnlHistoryDetails.Controls.Add(this.lblHistoryBalanceAfter);
-            this.pnlHistoryDetails.Controls.Add(this.label33);
-            this.pnlHistoryDetails.Controls.Add(this.lblHistoryBalanceBefore);
-            this.pnlHistoryDetails.Controls.Add(this.label32);
-            this.pnlHistoryDetails.Controls.Add(this.label31);
-            this.pnlHistoryDetails.Location = new System.Drawing.Point(175, 50);
-            this.pnlHistoryDetails.Name = "pnlHistoryDetails";
-            this.pnlHistoryDetails.Size = new System.Drawing.Size(159, 185);
-            this.pnlHistoryDetails.TabIndex = 20;
+            this.lblHistoryError.Text = "Make sure you have selected an account";
             // 
             // lblHistoryDifference
             // 
             this.lblHistoryDifference.AutoSize = true;
-            this.lblHistoryDifference.Location = new System.Drawing.Point(86, 123);
+            this.lblHistoryDifference.Location = new System.Drawing.Point(256, 49);
             this.lblHistoryDifference.Name = "lblHistoryDifference";
-            this.lblHistoryDifference.Size = new System.Drawing.Size(41, 13);
+            this.lblHistoryDifference.Size = new System.Drawing.Size(24, 13);
             this.lblHistoryDifference.TabIndex = 15;
-            this.lblHistoryDifference.Text = "label34";
-            // 
-            // lblHistoryBalanceAfter
-            // 
-            this.lblHistoryBalanceAfter.AutoSize = true;
-            this.lblHistoryBalanceAfter.Location = new System.Drawing.Point(86, 78);
-            this.lblHistoryBalanceAfter.Name = "lblHistoryBalanceAfter";
-            this.lblHistoryBalanceAfter.Size = new System.Drawing.Size(41, 13);
-            this.lblHistoryBalanceAfter.TabIndex = 14;
-            this.lblHistoryBalanceAfter.Text = "label29";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(3, 31);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(79, 13);
-            this.label33.TabIndex = 9;
-            this.label33.Text = "Balance before";
-            // 
-            // lblHistoryBalanceBefore
-            // 
-            this.lblHistoryBalanceBefore.AutoSize = true;
-            this.lblHistoryBalanceBefore.Location = new System.Drawing.Point(86, 32);
-            this.lblHistoryBalanceBefore.Name = "lblHistoryBalanceBefore";
-            this.lblHistoryBalanceBefore.Size = new System.Drawing.Size(41, 13);
-            this.lblHistoryBalanceBefore.TabIndex = 13;
-            this.lblHistoryBalanceBefore.Text = "label30";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(3, 77);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(70, 13);
-            this.label32.TabIndex = 10;
-            this.label32.Text = "Balance after";
+            this.lblHistoryDifference.Text = "n/a";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(5, 122);
+            this.label31.Location = new System.Drawing.Point(196, 49);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(56, 13);
+            this.label31.Size = new System.Drawing.Size(59, 13);
             this.label31.TabIndex = 11;
-            this.label31.Text = "Difference";
+            this.label31.Text = "Difference:";
             // 
             // listBHistory
             // 
@@ -649,6 +609,7 @@
             this.listBHistory.Name = "listBHistory";
             this.listBHistory.Size = new System.Drawing.Size(143, 186);
             this.listBHistory.TabIndex = 19;
+            this.listBHistory.SelectedIndexChanged += new System.EventHandler(this.listBHistory_SelectedIndexChanged);
             // 
             // label28
             // 
@@ -662,105 +623,42 @@
             // pnlBalance
             // 
             this.pnlBalance.Controls.Add(this.label9);
-            this.pnlBalance.Controls.Add(this.lblPnlBalanceShow);
-            this.pnlBalance.Location = new System.Drawing.Point(683, 50);
+            this.pnlBalance.Controls.Add(this.lblBalanceShow);
+            this.pnlBalance.Location = new System.Drawing.Point(8, 130);
             this.pnlBalance.Name = "pnlBalance";
-            this.pnlBalance.Size = new System.Drawing.Size(354, 67);
+            this.pnlBalance.Size = new System.Drawing.Size(275, 67);
             this.pnlBalance.TabIndex = 17;
             this.pnlBalance.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 5);
+            this.label9.Location = new System.Drawing.Point(3, -1);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 1;
             this.label9.Text = "Balance";
             // 
-            // lblPnlBalanceShow
+            // lblBalanceShow
             // 
-            this.lblPnlBalanceShow.AutoSize = true;
-            this.lblPnlBalanceShow.Location = new System.Drawing.Point(14, 33);
-            this.lblPnlBalanceShow.Name = "lblPnlBalanceShow";
-            this.lblPnlBalanceShow.Size = new System.Drawing.Size(35, 13);
-            this.lblPnlBalanceShow.TabIndex = 0;
-            this.lblPnlBalanceShow.Text = "label3";
-            // 
-            // lblCongratulations
-            // 
-            this.lblCongratulations.AutoSize = true;
-            this.lblCongratulations.Location = new System.Drawing.Point(427, 70);
-            this.lblCongratulations.Name = "lblCongratulations";
-            this.lblCongratulations.Size = new System.Drawing.Size(165, 13);
-            this.lblCongratulations.TabIndex = 18;
-            this.lblCongratulations.Text = "Congratulations! Account created";
-            this.lblCongratulations.Visible = false;
-            // 
-            // btnCloseAccountPage
-            // 
-            this.btnCloseAccountPage.Location = new System.Drawing.Point(458, 96);
-            this.btnCloseAccountPage.Name = "btnCloseAccountPage";
-            this.btnCloseAccountPage.Size = new System.Drawing.Size(109, 23);
-            this.btnCloseAccountPage.TabIndex = 19;
-            this.btnCloseAccountPage.Text = "Close this page";
-            this.btnCloseAccountPage.UseVisualStyleBackColor = true;
-            this.btnCloseAccountPage.Visible = false;
-            this.btnCloseAccountPage.Click += new System.EventHandler(this.btnCloseAccountPage_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "that your first deposit is equal to or greater than 1000";
-            // 
-            // rBtnNewCustomer
-            // 
-            this.rBtnNewCustomer.AutoSize = true;
-            this.rBtnNewCustomer.Location = new System.Drawing.Point(17, 36);
-            this.rBtnNewCustomer.Name = "rBtnNewCustomer";
-            this.rBtnNewCustomer.Size = new System.Drawing.Size(93, 17);
-            this.rBtnNewCustomer.TabIndex = 21;
-            this.rBtnNewCustomer.TabStop = true;
-            this.rBtnNewCustomer.Text = "New customer";
-            this.rBtnNewCustomer.UseVisualStyleBackColor = true;
-            this.rBtnNewCustomer.CheckedChanged += new System.EventHandler(this.rBtnNewCustomer_CheckedChanged);
-            // 
-            // rBtnNewAccount
-            // 
-            this.rBtnNewAccount.AutoSize = true;
-            this.rBtnNewAccount.Location = new System.Drawing.Point(111, 36);
-            this.rBtnNewAccount.Name = "rBtnNewAccount";
-            this.rBtnNewAccount.Size = new System.Drawing.Size(89, 17);
-            this.rBtnNewAccount.TabIndex = 22;
-            this.rBtnNewAccount.TabStop = true;
-            this.rBtnNewAccount.Text = "New account";
-            this.rBtnNewAccount.UseVisualStyleBackColor = true;
-            this.rBtnNewAccount.CheckedChanged += new System.EventHandler(this.rBtnNewAccount_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "I want to register a:";
+            this.lblBalanceShow.AutoSize = true;
+            this.lblBalanceShow.Location = new System.Drawing.Point(14, 29);
+            this.lblBalanceShow.Name = "lblBalanceShow";
+            this.lblBalanceShow.Size = new System.Drawing.Size(35, 13);
+            this.lblBalanceShow.TabIndex = 0;
+            this.lblBalanceShow.Text = "label3";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 384);
+            this.ClientSize = new System.Drawing.Size(679, 384);
             this.Controls.Add(this.pnlBalance);
             this.Controls.Add(this.pnlHistory);
-            this.Controls.Add(this.pnlWithdraw);
-            this.Controls.Add(this.pnlDeposit);
             this.Controls.Add(this.pnlOpenAcc);
             this.Controls.Add(this.lblSelectAcc);
+            this.Controls.Add(this.pnlDeposit);
+            this.Controls.Add(this.pnlWithdraw);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBAccounts);
             this.Controls.Add(this.listBCustomers);
@@ -782,8 +680,6 @@
             this.pnlWithdraw.PerformLayout();
             this.pnlHistory.ResumeLayout(false);
             this.pnlHistory.PerformLayout();
-            this.pnlHistoryDetails.ResumeLayout(false);
-            this.pnlHistoryDetails.PerformLayout();
             this.pnlBalance.ResumeLayout(false);
             this.pnlBalance.PerformLayout();
             this.ResumeLayout(false);
@@ -824,35 +720,25 @@
         private System.Windows.Forms.Label lblDepositError;
         private System.Windows.Forms.Button btnDepositCancel;
         private System.Windows.Forms.Button btnDepositAccept;
-        private System.Windows.Forms.Label lblDepositNewBalance;
         private System.Windows.Forms.Label lblDepositCurrentBalance;
         private System.Windows.Forms.TextBox txtBDepositAmount;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel pnlWithdraw;
-        private System.Windows.Forms.Label lblWithdrawError;
         private System.Windows.Forms.Button btnWithdrawCancel;
         private System.Windows.Forms.Button btnWithdrawAccept;
-        private System.Windows.Forms.Label lblWithdrawNewBalance;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lblWithdrawCurrentBalance;
         private System.Windows.Forms.TextBox txtBWithdrawAmount;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Panel pnlHistory;
         private System.Windows.Forms.Label lblHistoryError;
-        private System.Windows.Forms.Panel pnlHistoryDetails;
         private System.Windows.Forms.Label lblHistoryDifference;
-        private System.Windows.Forms.Label lblHistoryBalanceAfter;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label lblHistoryBalanceBefore;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ListBox listBHistory;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Panel pnlBalance;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblPnlBalanceShow;
+        private System.Windows.Forms.Label lblBalanceShow;
         private System.Windows.Forms.Button btnCloseAccountPage;
         private System.Windows.Forms.Label lblCongratulations;
         private System.Windows.Forms.Label label3;

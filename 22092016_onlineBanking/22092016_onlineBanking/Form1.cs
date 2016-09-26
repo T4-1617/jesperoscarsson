@@ -12,7 +12,6 @@ namespace _22092016_onlineBanking
 {
     public partial class Form1 : Form
     {
-
         System.Collections.ArrayList peopleList;
 
         public Form1()
@@ -23,11 +22,7 @@ namespace _22092016_onlineBanking
 
         public void CloseAllPnl()
         {
-            pnlDeposit.Visible  = false;
-            pnlHistory.Visible  = false;
-            pnlOpenAcc.Visible  = false;
-            pnlWithdraw.Visible = false;
-            pnlBalance.Visible  = false;
+            pnlDeposit.Visible  = false; pnlHistory.Visible  = false; pnlOpenAcc.Visible  = false; pnlWithdraw.Visible = false; pnlBalance.Visible  = false;
         }
 
         public void UpdateCustomerListBox()
@@ -54,9 +49,14 @@ namespace _22092016_onlineBanking
         public void UpdateGUIToCustomer()
         {
             CloseAllPnl();
-            btnBalance.Enabled = true;
-            btnDeposit.Enabled = true;
-            btnWithdraw.Enabled = true;
+
+            if (rBtnEmployee.Checked == false)
+            {
+                btnBalance.Enabled = true;
+                btnDeposit.Enabled = true;
+                btnWithdraw.Enabled = true; 
+            }
+
             listBAccounts.Visible = true;
             lblSelectAcc.Visible = true;
         }
@@ -71,24 +71,46 @@ namespace _22092016_onlineBanking
         {
             CloseAllPnl();
             pnlDeposit.Visible = true;
+            Account temp = (Account)listBAccounts.SelectedItem;
+            lblDepositCurrentBalance.Text = temp.GetBalance().ToString();
         }
 
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
             CloseAllPnl();
             pnlWithdraw.Visible = true;
+            Account temp = (Account)listBAccounts.SelectedItem;
+            lblWithdrawCurrentBalance.Text = temp.GetBalance().ToString();
         }
 
         private void btnBalance_Click(object sender, EventArgs e)
         {
             CloseAllPnl();
             pnlBalance.Visible = true;
+
+            if (listBAccounts.SelectedItem != null)
+            {
+                Account temp = (Account)listBAccounts.SelectedItem;
+                lblBalanceShow.Text = temp.GetAccountInfo();
+            }
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
             CloseAllPnl();
             pnlHistory.Visible = true;
+
+            if (listBAccounts.SelectedItem != null)
+            {
+                listBHistory.Items.Clear();
+                Account temp = (Account)listBAccounts.SelectedItem;
+
+                foreach (Transaction item in temp.GetTransactionHistory())
+                {
+                    listBHistory.Items.Add(item);
+                }
+                listBHistory.DisplayMember = "GetTransaction";
+            }
         }
 
         private void btnConfirmAccReg_Click(object sender, EventArgs e)
@@ -158,6 +180,75 @@ namespace _22092016_onlineBanking
         {
             txtBName.Enabled = true;
             txtBNumb.Enabled = true;
+        }
+
+        private void btnWithdrawAccept_Click(object sender, EventArgs e)
+        {
+            if (listBAccounts.SelectedItem != null)
+            {
+                Account temp = (Account)listBAccounts.SelectedItem;
+                temp.Withdraw(decimal.Parse(txtBWithdrawAmount.Text));
+                lblWithdrawCurrentBalance.Text = temp.GetBalance().ToString();
+            }
+        }
+
+        private void btnWithdrawCancel_Click(object sender, EventArgs e)
+        {
+            CloseAllPnl();
+        }
+
+        private void btnDepositCancel_Click(object sender, EventArgs e)
+        {
+            CloseAllPnl();
+        }
+
+        private void btnDepositAccept_Click(object sender, EventArgs e)
+        {
+            if (listBAccounts.SelectedItem != null)
+            {
+                Account temp = (Account)listBAccounts.SelectedItem;
+                temp.Deposit(decimal.Parse(txtBDepositAmount.Text));
+                lblDepositCurrentBalance.Text = temp.GetBalance().ToString();
+            }
+        }
+
+        private void listBHistory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBHistory.SelectedItem != null)
+            {
+                Transaction temp = (Transaction)listBHistory.SelectedItem;
+
+                if (temp.IsDepositOrWithdraw == "withdrew")
+                {
+                    lblHistoryDifference.Text = "-" + temp.Difference.ToString();
+                }
+
+                else
+                {
+                    lblHistoryDifference.Text = temp.Difference.ToString();
+                }
+            }
+        }
+
+        private void rBtnCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (listBCustomers.Items == null)
+            {
+                btnBalance.Enabled = true;
+                btnDeposit.Enabled = true;
+                btnOpenAcc.Enabled = true;
+                btnWithdraw.Enabled = true;
+                btnHistory.Enabled = false; 
+            }
+        }
+
+        private void rBtnEmployee_CheckedChanged(object sender, EventArgs e)
+        {
+            btnBalance.Enabled = false;
+            btnDeposit.Enabled = false;
+            btnOpenAcc.Enabled = true;
+            btnWithdraw.Enabled = false;
+            btnHistory.Enabled = true;
         }
     }
 }

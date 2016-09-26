@@ -8,8 +8,6 @@ namespace _22092016_onlineBanking
 {
     public class Customer
     {
-        //TODO Find usage for ID   
-
         private System.Collections.ArrayList accounts;
 
         public Customer()
@@ -19,7 +17,6 @@ namespace _22092016_onlineBanking
 
         public string Name { get; set; }
         public string TelephoneNumber { get; set; }
-        private int _uniqueId { get; set; }
 
         public void CreateAccount(decimal initialDeposit, string accountName)
         {
@@ -44,12 +41,20 @@ namespace _22092016_onlineBanking
 
     public class Account
     {
+        private System.Collections.ArrayList transactions;
+
         public Account()
         {
+            transactions = new System.Collections.ArrayList();
         }
 
         public string AccountName { get; set; }
         private decimal _balance { get; set; }
+
+        public decimal GetBalance()
+        {
+            return _balance;
+        }
 
         public string GetAccountInfo()
         {
@@ -59,11 +64,37 @@ namespace _22092016_onlineBanking
         public void Deposit(decimal amount)
         {
             _balance += amount;
+            transactions.Add(new Transaction() { AccountName = this.AccountName, Difference = amount, IsDepositOrWithdraw = "deposited" });
         }
 
         public void Withdraw(decimal amount)
         {
-            _balance -= amount;
+            if (_balance - amount >= 500)
+            {
+                _balance -= amount;
+                transactions.Add(new Transaction() { AccountName = this.AccountName, Difference = amount, IsDepositOrWithdraw = "withdrew" });
+            }
+        }
+
+        public System.Collections.ArrayList GetTransactionHistory()
+        {
+            return transactions;
+        }
+    }
+
+    public class Transaction
+    {
+        public Transaction()
+        {
+        }
+
+        public string IsDepositOrWithdraw { get; set; }
+        public decimal Difference { get; set; }
+        public string AccountName { get; set; }
+
+        public string GetTransaction
+        {
+            get { return string.Format("{0} {1} {2}", AccountName, IsDepositOrWithdraw, Difference.ToString()); }
         }
     }
 }
