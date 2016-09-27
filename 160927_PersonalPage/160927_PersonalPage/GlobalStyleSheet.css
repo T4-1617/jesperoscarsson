@@ -1,0 +1,11 @@
+﻿body {
+    font-family:'Segoe UI Light', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header{
+    text-align:center;
+}
+
+aside{
+    float:right;
+}
