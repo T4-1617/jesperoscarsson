@@ -1,11 +1,28 @@
 ﻿body {
     font-family:'Segoe UI Light', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
-header{
-    text-align:center;
+header {
+    text-align: center;
+    color: #e6e600;
+    background-color: #006666;
 }
 
-aside{
-    float:right;
+h2 {
+    margin: 0;
+    padding: 5px 0 5px 0;
+}
+
+#Links {
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+#LinkSeperator {
+    margin-top: 5px;
+}
+
+p {
+    padding-left: 10px;
 }
