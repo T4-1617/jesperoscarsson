@@ -1,28 +1,25 @@
 ﻿body {
-    font-family:'Segoe UI Light', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
+    background-color: #8080ff;
+    font-family: 'Segoe UI Light', Tahoma, Geneva, Verdana, sans-serif;
+    color: #eee;
 }
 
-header {
-    text-align: center;
-    color: #e6e600;
-    background-color: #006666;
+.MainText {
+    margin: 0 auto;
+    margin-top: 20%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 60%;
 }
 
-h2 {
-    margin: 0;
-    padding: 5px 0 5px 0;
+a {
+    text-decoration: none;
+    color: #eee;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0.5% 1% 0.5% 1%;
 }
 
-#Links {
-    padding-left: 10px;
-    margin-bottom: 0;
-}
-
-#LinkSeperator {
-    margin-top: 5px;
-}
-
-p {
-    padding-left: 10px;
+a:hover {
+    color: #8080ff;
+    background-color: #eee;
 }
