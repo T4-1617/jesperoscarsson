@@ -4,10 +4,34 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/StyleSheetMain.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!--Home button-->
+            <div class="navbar-header">
+                <a class="navbar-brand " href="#"><span class="glyphicon glyphicon-home"></span></a>
+            </div>
+            <!--Dropdown menu-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick View<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Content#1</a></li>
+                        <li><a href="#">Content#2</a></li>
+                        <li><a href="#">Content#3</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    @RenderBody()
+
 </body>
 </html>
