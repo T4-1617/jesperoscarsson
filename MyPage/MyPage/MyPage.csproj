@@ -124,6 +124,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts.js" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -144,6 +145,7 @@
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="StyleSheetDark.css" />
     <Content Include="StyleSheetMain.css" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
