@@ -3,6 +3,10 @@
     background-color: #CCCCCC;
 }
 
+#imageRow {
+    padding-top: 30%;
+}
+
 div.circle-image-link {
     /* make it responsive */
     max-width: 100%;
