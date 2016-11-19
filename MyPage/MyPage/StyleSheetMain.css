@@ -11,7 +11,7 @@ div.circle-image-link {
     /* make it responsive */
     max-width: 100%;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     /* div height to be the same as width*/
     padding-top: 100%;
@@ -29,6 +29,8 @@ div.circle-image-link {
     left: 0;
     right: 0;
     bottom: 0;
+    /*Own stuff*/
+    border: 2px solid #878786;
     text-align: center;
 }
 

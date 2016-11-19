@@ -1,5 +1,45 @@
 ﻿@import url("StyleSheetMain.css");
 
 body {
-    background-color: black;
+    background-color: #040404;
+}
+
+p {
+    color: #878786;
+    font-size: large;
+}
+
+h2 {
+    color: #A2482E;
+}
+
+strong {
+    color: #A2482E;
+}
+/*When navbar dropdown menus are toggled*/
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #3F3F3F;
+    color: #FFFFFF;
+}
+/*Navbar dropdown meus background for items*/
+.dropdown-menu {
+    background-color: #201F1D;
+}
+/*Navbar dropdown menus text color*/
+.dropdown-menu>li>a {
+    color: #FFFFFF;
+}
+/*Navbar background color*/
+.navbar-fixed-top {
+    background-color: #201F1D;
+}
+
+.circle-image-text {
+    color: #FFFFFF;
+    font-size: xx-large;
+    text-shadow: 1px 1px black;
+}
+
+#imageRow {
+    padding-top: 35%;
 }
