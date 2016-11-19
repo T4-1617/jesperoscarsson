@@ -1,6 +1,10 @@
 ﻿body {
     padding-top: 5%;
-    background-color: #CCCCCC;
+    background-color: #f1eded;
+}
+
+p {
+    font-size: medium;
 }
 
 #imageRow {
