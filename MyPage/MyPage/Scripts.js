@@ -1,8 +1,8 @@
 ﻿// *** TO BE CUSTOMISED ***
 
 var style_cookie_name = "theme";
-var style_cookie_duration = 1;
-var style_domain = "thesitewizard.com";
+var style_cookie_duration = 3;
+var style_domain = "jespersportfolio.azurewebsites.net/";
 
 // *** END OF CUSTOMISABLE SECTION ***
 // You do not need to customise anything below this line
