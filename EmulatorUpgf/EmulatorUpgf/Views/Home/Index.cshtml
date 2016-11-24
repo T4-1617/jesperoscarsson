@@ -1,0 +1,9 @@
+﻿<div class="container">
+    <h2>Sign up for spam mail today!</h2>
+    @using (Html.BeginForm())
+    {
+        <p>Enter your name: @Html.TextBox("Name")</p>
+        <p>Enter your number: @Html.TextBox("Phone")</p>
+        <button type="submit">By pressing this you agree to be spammed by shitty companies</button>
+    }
+</div>
