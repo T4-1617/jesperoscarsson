@@ -12,6 +12,19 @@ namespace EmulatorUpgf.Controllers
 {
     public class HomeController : Controller
     {
+        CloudStorageAccount storageAccount;
+        CloudTableClient tableClient;
+        CloudTable table;
+
+        public HomeController()
+        {
+            // Parse the connection string and return a reference to the storage account.
+            storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            tableClient = storageAccount.CreateCloudTableClient();
+            table = tableClient.GetTableReference("people");
+            table.CreateIfNotExists();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -23,26 +36,9 @@ namespace EmulatorUpgf.Controllers
         {
             if(ModelState.IsValid)
             {
-                PoorSoul person = new PoorSoul(Guid.NewGuid().ToString()) { Name = ps.Name, Phone = ps.Phone };
+                PoorSoul person = new PoorSoul(Guid.NewGuid().ToString()) { Name = ps.Name, Phone = ps.Phone };            
 
-                // Parse the connection string and return a reference to the storage account.
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                    CloudConfigurationManager.GetSetting("StorageConnectionString")
-                );
-
-                // Create the table client.
-                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-
-                // Retrieve a reference to the table.
-                CloudTable table = tableClient.GetTableReference("people");
-
-                // Create the table if it doesn't exist.
-                table.CreateIfNotExists();
-
-                // Create the TableOperation object that inserts the customer entity.
                 TableOperation insertOperation = TableOperation.Insert(person);
-
-                // Execute the insert operation.
                 table.Execute(insertOperation);
 
                 return View("DoneReg", ps);
