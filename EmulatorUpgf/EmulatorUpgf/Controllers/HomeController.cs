@@ -12,15 +12,6 @@ namespace EmulatorUpgf.Controllers
 {
     public class HomeController : Controller
     {
-        [NonAction]
-        public string GenerateRowKeyInStringFormat()
-        {
-            Guid rowKey = Guid.NewGuid();
-            string s = rowKey.ToString();
-            
-            return s;
-        }
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -32,7 +23,7 @@ namespace EmulatorUpgf.Controllers
         {
             if(ModelState.IsValid)
             {
-                PoorSoul person = new PoorSoul(GenerateRowKeyInStringFormat()) { Name = ps.Name, Phone = ps.Phone };
+                PoorSoul person = new PoorSoul(Guid.NewGuid().ToString()) { Name = ps.Name, Phone = ps.Phone };
 
                 // Parse the connection string and return a reference to the storage account.
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
