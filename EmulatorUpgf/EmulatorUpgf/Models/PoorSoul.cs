@@ -13,10 +13,16 @@ namespace EmulatorUpgf.Models
         {
         }
 
-        public PoorSoul(string rowkey)
+        public PoorSoul(string rowKey)
         {
-            this.PartitionKey = "spamListPerson";
-            this.RowKey = rowkey;
+            this.PartitionKey = "defaultPartitionKey";
+            this.RowKey = rowKey;
+        }
+
+        public PoorSoul(string partitionKey, string rowKey)
+        {
+            this.PartitionKey = partitionKey;
+            this.RowKey = rowKey;
         }
 
         [Required(ErrorMessage = "Ange ditt namn")]
