@@ -15,7 +15,7 @@ namespace EmulatorUpgf.Models
 
         public PoorSoul(string rowkey)
         {
-            this.PartitionKey = "placeholder";
+            this.PartitionKey = "spamListPerson";
             this.RowKey = rowkey;
         }
 

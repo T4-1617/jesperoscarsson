@@ -12,6 +12,15 @@ namespace EmulatorUpgf.Controllers
 {
     public class HomeController : Controller
     {
+        [NonAction]
+        public string GenerateRowKeyInStringFormat()
+        {
+            Guid rowKey = Guid.NewGuid();
+            string s = rowKey.ToString();
+            
+            return s;
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -23,6 +32,8 @@ namespace EmulatorUpgf.Controllers
         {
             if(ModelState.IsValid)
             {
+                PoorSoul person = new PoorSoul(GenerateRowKeyInStringFormat()) { Name = ps.Name, Phone = ps.Phone };
+
                 // Parse the connection string and return a reference to the storage account.
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
                     CloudConfigurationManager.GetSetting("StorageConnectionString")
@@ -37,10 +48,8 @@ namespace EmulatorUpgf.Controllers
                 // Create the table if it doesn't exist.
                 table.CreateIfNotExists();
 
-                PoorSoul testPerson = new PoorSoul("rowKey");
-
                 // Create the TableOperation object that inserts the customer entity.
-                TableOperation insertOperation = TableOperation.Insert(testPerson);
+                TableOperation insertOperation = TableOperation.Insert(person);
 
                 // Execute the insert operation.
                 table.Execute(insertOperation);
