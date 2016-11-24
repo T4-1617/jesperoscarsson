@@ -25,6 +25,22 @@ namespace EmulatorUpgf.Controllers
             table.CreateIfNotExists();
         }
 
+        [NonAction]
+        public List<PoorSoul> ReturnPeopleEntityList(string PartitionKeySearchWord)
+        {
+            List<PoorSoul> peopleEntityList = new List<PoorSoul>();
+            // Construct the query operation for all customer entities where PartitionKey="defaultPartitionKey".
+            TableQuery<PoorSoul> query = new TableQuery<PoorSoul>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, PartitionKeySearchWord));
+
+            // Print the fields for each customer.
+            foreach (PoorSoul entity in table.ExecuteQuery(query))
+            {
+                peopleEntityList.Add(entity);
+            }
+
+            return peopleEntityList;
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -34,9 +50,9 @@ namespace EmulatorUpgf.Controllers
         [HttpPost]
         public ViewResult Index(PoorSoul ps)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                PoorSoul person = new PoorSoul(Guid.NewGuid().ToString()) { Name = ps.Name, Phone = ps.Phone };            
+                PoorSoul person = new PoorSoul(Guid.NewGuid().ToString()) { Name = ps.Name, Phone = ps.Phone };
 
                 TableOperation insertOperation = TableOperation.Insert(person);
                 table.Execute(insertOperation);
@@ -45,6 +61,12 @@ namespace EmulatorUpgf.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult SpamList()
+        {
+            return View(ReturnPeopleEntityList("defaultPartitionKey"));
         }
     }
 }
