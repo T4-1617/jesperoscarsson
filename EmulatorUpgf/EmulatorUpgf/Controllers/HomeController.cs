@@ -64,7 +64,7 @@ namespace EmulatorUpgf.Controllers
         }
 
         [HttpGet]
-        public ActionResult SpamList()
+        public ViewResult SpamList()
         {
             return View(ReturnPeopleEntityList("defaultPartitionKey"));
         }
