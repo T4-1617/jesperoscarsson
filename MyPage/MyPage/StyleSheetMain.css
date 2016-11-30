@@ -46,3 +46,9 @@ div.circle-image-link {
     color: #eee;
     font-size: xx-large;
 }
+
+project-list-group button{
+    background: none;
+    border: none;
+    font: inherit;
+}
