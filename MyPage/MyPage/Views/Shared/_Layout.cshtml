@@ -8,37 +8,42 @@
     <script src="~/scripts/bootstrap.min.js"></script>
     <script src="~/Scripts.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/StyleSheetMain.css" title="light" rel="stylesheet" />
-    <link href="~/StyleSheetDark.css" title="dark" rel="alternate stylesheet" />  
+    <link href="~/StyleSheetMain.css" title="default" rel="stylesheet"/>
+    <link href="~/StyleSheetDark.css" title="alternate" rel="alternate stylesheet" />
 </head>
-<body onload="set_style_from_cookie()">
+<body onload="setStoredStyleSheet(light)">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="col-md-1"></div>
-            <!--Home button-->
             <div class="navbar-header">
-                <a class="navbar-brand " href="/"><span class="glyphicon glyphicon-home"></span></a>
-            </div>    
-            <!--Dropdown menus-->
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Color Scheme<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a onclick="switch_style('light');return false;" name="theme" value="Light Theme" id="light">Light</a></li>
-                        <li><a onclick="switch_style('dark');return false;" name="theme" value="Dark Theme" id="dark">Dark</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Quick View<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/Home/Projects">Projects</a></li>
-                        <li><a href="#SelfDescription">About Me</a></li>
-                        <li><a href="/Home/Contact">Contact</a></li>
-                        <li><a href="https://github.com/JesperOscarsson">Github</a></li>
-                    </ul>
-                </li>
-            </ul>
+                <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home Orange"></span></a>
+                <button type="button" class="navbar-toggle Orange" data-toggle="collapse" data-target="#Navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>     
+            <div class="collapse navbar-collapse" id="Navbar">
+                <!--Dropdown menus-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle Orange" data-toggle="dropdown" href="#">Color Scheme<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="setActiveStyleSheet('default'); return false;">Light</a></li>
+                            <li><a onclick="setActiveStyleSheet('alternate'); return false;">Dark</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle Orange" data-toggle="dropdown" href="#">Quick View<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/Home/Projects">Projects</a></li>
+                            <li><a href="#SelfDescription">About Me</a></li>
+                            <li><a href="/Home/Contact">Contact</a></li>
+                            <li><a href="https://github.com/JesperOscarsson">Github</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

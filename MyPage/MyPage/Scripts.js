@@ -1,56 +1,59 @@
-﻿// *** TO BE CUSTOMISED ***
-
-var style_cookie_name = "theme";
-var style_cookie_duration = 3;
-var style_domain = "jespersportfolio.azurewebsites.net/";
-
-// *** END OF CUSTOMISABLE SECTION ***
-// You do not need to customise anything below this line
-
-function switch_style(css_title) {
-    // You may use this script on your site free of charge provided
-    // you do not remove this notice or the URL below. Script from
-    // https://www.thesitewizard.com/javascripts/change-style-sheets.shtml
-    var i, link_tag;
-    for (i = 0, link_tag = document.getElementsByTagName("link") ;
-      i < link_tag.length ; i++) {
-        if ((link_tag[i].rel.indexOf("stylesheet") != -1) &&
-          link_tag[i].title) {
-            link_tag[i].disabled = true;
-            if (link_tag[i].title == css_title) {
-                link_tag[i].disabled = false;
-            }
+﻿function setActiveStyleSheet(title) {
+    var i, a, main;
+    for (i = 0; (a = document.getElementsByTagName("link")[i]) ; i++) {
+        if (a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
+            a.disabled = true;
+            if (a.getAttribute("title") == title) a.disabled = false;
         }
-        set_cookie(style_cookie_name, css_title,
-          style_cookie_duration, style_domain);
     }
 }
-function set_style_from_cookie() {
-    var css_title = get_cookie(style_cookie_name);
-    if (css_title.length) {
-        switch_style(css_title);
+
+function getActiveStyleSheet() {
+    var i, a;
+    for (i = 0; (a = document.getElementsByTagName("link")[i]) ; i++) {
+        if (a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title") && !a.disabled) return a.getAttribute("title");
     }
+    return null;
 }
-function set_cookie(cookie_name, cookie_value,
-    lifespan_in_days, valid_domain) {
-    // https://www.thesitewizard.com/javascripts/cookies.shtml
-    var domain_string = valid_domain ?
-                       ("; domain=" + valid_domain) : '';
-    document.cookie = cookie_name +
-                       "=" + encodeURIComponent(cookie_value) +
-                       "; max-age=" + 60 * 60 *
-                       24 * lifespan_in_days +
-                       "; path=/" + domain_string;
-}
-function get_cookie(cookie_name) {
-    // https://www.thesitewizard.com/javascripts/cookies.shtml
-    var cookie_string = document.cookie;
-    if (cookie_string.length != 0) {
-        var cookie_value = cookie_string.match(
-                        '(^|;)[\s]*' +
-                        cookie_name +
-                        '=([^;]*)');
-        return decodeURIComponent(cookie_value[2]);
+
+function getPreferredStyleSheet() {
+    var i, a;
+    for (i = 0; (a = document.getElementsByTagName("link")[i]) ; i++) {
+        if (a.getAttribute("rel").indexOf("style") != -1
+           && a.getAttribute("rel").indexOf("alt") == -1
+           && a.getAttribute("title")
+           ) return a.getAttribute("title");
     }
-    return '';
+    return null;
 }
+
+function createCookie(name, value, days) {
+    expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+window.onload = function (e) {
+    var cookie = readCookie("style");
+    var title = cookie ? cookie : getPreferredStyleSheet();
+    setActiveStyleSheet(title);
+}
+
+window.onunload = function (e) {
+    var title = getActiveStyleSheet();
+    createCookie("style", title, 365);
+}
+
+var cookie = readCookie("style");
+var title = cookie ? cookie : getPreferredStyleSheet();
+setActiveStyleSheet(title);
