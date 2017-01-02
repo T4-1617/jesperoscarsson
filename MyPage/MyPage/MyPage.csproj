@@ -172,6 +172,7 @@
     </Content>
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Home\Projects.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
